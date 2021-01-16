@@ -37,7 +37,6 @@
 
 @media screen and (min-width: 576px) {
     .navbar-expand-sm {
-        -ms-flex-flow: row nowrap;
         flex-flow: row nowrap;
         -ms-flex-pack: start;
         justify-content: flex-start;
@@ -112,10 +111,6 @@ ul {
     font-size: 28px;
 }
 
-img {
-    margin-bottom: -4px;
-}
-
 .logo {
     font-weight: bold;
     font-size: 28px;
@@ -129,21 +124,25 @@ header {
     max-width: 1200px;
     margin: auto;
 }
+
 @media screeen and (min-width: 1200px) {
     .container {
         max-width: 1140px;
     }
 }
+
 @media screeen and (min-width: 992px) {
     .container {
         max-width: 960px;
     }
 }
+
 @media screeen and (min-width: 768px) {
     .container {
         max-width: 720px;
     }
 }
+
 @media screeen and (min-width: 576px) {
     .container {
         max-width: 540px;
@@ -164,4 +163,132 @@ header {
     background: linear-gradient(rgba(190, 161, 161, 0.4), rgba(190, 161, 161, 0.4)), url('/img/formular.jpg');
     background-size: cover;
     font-size: 20px;
+}
+
+body {
+    margin: 0;
+    background: #dedede;
+}
+
+.nav-link.active {
+    color: #383838;
+}
+
+.footer {
+    position: static;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: url("/img/formular.jpg") no-repeat bottom;
+    background-size: cover;
+    padding: 30px;
+}
+
+.made-with {
+    color: #FFF5EE;
+    font-size: 18px;
+}
+
+.follow-us {
+    color: #FFF5EE;
+    font-size: 18px;
+}
+
+/* [THE CONTAINER] */
+#slideshow {
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    background: #000;
+}
+
+/* [THE SLIDES] */
+#slideshow, #slides img {
+    width: 100%;
+    /* [CHANGE THE SIZE AS YOU SEE FIT] */
+    max-width: 1000px;
+    height: 376px;
+}
+
+#slides img {
+    /* OBJECT-FIT: PLAY WITH WHICHEVER WORKS BEST */
+    /* fill | contain | cover | none | scale-down */
+    object-fit: cover;
+    transition: all 1s;
+    visibility: visible;
+    opacity: 1;
+}
+
+#slideshow img.ninja {
+    visibility: hidden;
+    opacity: 0.3;
+}
+
+/* [CONTROLS + CAPTION] */
+#slide-left, #slide-right, #slide-caption {
+    position: absolute;
+}
+
+#slide-left, #slide-right {
+    font-size: 3em;
+    font-weight: bold;
+    color: #fff;
+    background: #333;
+    padding: 5px 10px;
+    top: 40%;
+    transition: opacity 0.5s;
+    opacity: 0.5;
+}
+
+#slide-left:hover, #slide-right:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+#slide-left {
+    left: 0;
+}
+
+#slide-right {
+    right: 0;
+}
+
+#slide-caption {
+    height: 10%;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 10px;
+    font-size: 1.0em;
+
+}
+
+.form-wrapper {
+    background: url("/img/formular.jpg") no-repeat center;
+    background-size: cover;
+}
+
+.inputs-wrapper, .inputs-wrapper > * {
+    position: relative;
+}
+
+.inputs-wrapper:before {
+    content: " ";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border: 2px solid #E6BE8A;
+    background-color: #ffffff;
+    opacity: 0.6;
+}
+
+.inputs-card label {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.hidden {
+    display: none;
 }

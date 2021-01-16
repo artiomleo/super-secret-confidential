@@ -76,7 +76,7 @@
                     <option disabled selected value> -- selectați o opțiune -- </option>
                 @foreach(App\Models\Department::query()->get() as $department)
                         <option  value='{{ $department->id }}'>{{ $department->name }}</option>
-                    @endforeach
+                @endforeach
                 </select>
             </div>
 
@@ -97,7 +97,9 @@
                 <strong> Data și ora : </strong>
                 <input class="date form-control" type="datetime-local" id="starttime" name="start_time" required>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" id="submitbutton" onclick="document.getElementById('submitbutton').disabled = true;">
+                Submit
+            </button>
         </form>
     </div>
 </div>

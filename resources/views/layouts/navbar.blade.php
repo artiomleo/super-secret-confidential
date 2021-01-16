@@ -20,20 +20,24 @@
                     </li>
                 @endif
                 <li class="nav-item">
-                    <a class="nav-link {{ \Route::current()->getName() === 'despreNoi' ? 'active' : '' }}" href="/despre-noi">Despre noi</a>
+                    <a class="nav-link {{ \Route::current()->getName() === 'despreNoi' ? 'active' : '' }}"
+                       href="/despre-noi">Despre noi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ \Route::current()->getName() == 'eventCreate' ? 'active' : '' }}"
+                       href="/event-create">Programează-te</a>
                 </li>
                 @if(Illuminate\Support\Facades\Auth::check() && !Illuminate\Support\Facades\Auth::user()->isAdmin())
                     <li class="nav-item">
-                        <a class="nav-link {{ \Route::current()->getName() == 'eventCreate' ? 'active' : '' }}" href="/event-create">Programează-te</a>
+                        <a class="nav-link {{ \Route::current()->getName() == 'myEvents' ? 'active' : '' }}"
+                           href="/my-events">Programările mele</a>
                     </li>
-                @endif
-                <li class="nav-item">
-                    @if(Illuminate\Support\Facades\Auth::check() && !Illuminate\Support\Facades\Auth::user()->isAdmin())
-                        <a class="nav-link {{ \Route::current()->getName() == 'myEvents' ? 'active' : '' }}" href="/my-events">Programările mele</a>
-                    @else
-                        <a class="nav-link {{ \Route::current()->getName() === 'events' ? 'active' : '' }} " href="/events">Programările clientilor</a>
-                    @endif
-                </li>
+                    <li class="nav-item">
+                        @elseif(Illuminate\Support\Facades\Auth::check() && Illuminate\Support\Facades\Auth::user()->isAdmin())
+                            <a class="nav-link {{ \Route::current()->getName() === 'events' ? 'active' : '' }} "
+                               href="/events">Programările clientilor</a>
+                        @endif
+                    </li>
             </ul>
         </nav>
         <div class="logo">

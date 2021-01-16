@@ -10,15 +10,19 @@ class DepartmentsSeeder extends Seeder
     public function run()
     {
         Department::query()->create([
-            'name' => 'Estetică',
+            'name' => 'Coafor',
         ]);
 
         Department::query()->create([
-            'name' => 'Consultanță',
+            'name' => 'Cosmetica',
         ]);
 
         Department::query()->create([
-            'name' => 'Frumusețe',
+            'name' => 'Manichiura',
+        ]);
+
+        Department::query()->create([
+            'name' => 'Pedichiura',
         ]);
     }
 }

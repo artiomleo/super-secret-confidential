@@ -27,6 +27,11 @@
 
 </head>
 <body class="antialiased">
+@if(request()->query('event') === 'success')
+    <div class="event-notification">
+        Te-ai programat cu succes!
+    </div>
+@endif
 <div class="d-flex justify-content-lg-around">
     @foreach(App\Models\Event::query()->where([
                 'user_id' => \Illuminate\Support\Facades\Auth::id()

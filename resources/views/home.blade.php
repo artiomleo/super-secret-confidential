@@ -24,6 +24,11 @@
 
 </head>
 <body class="antialiased">
+@if(request()->query('event') === 'success')
+    <div class="event-notification">
+        Te-ai programat cu succes!
+    </div>
+@endif
 <?php echo View::make('layouts.footer') ?>
 </body>
 </html>

@@ -19,8 +19,9 @@ class CreateEventsTable extends Migration
             $table->string('email');
             $table->string('phone_number');
             $table->timestamp('start_time');
+            $table->timestamp('end_time');
             $table->foreignId('service_id')->constrained('services');
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('user_id')->nullable()->constrained('users');
             $table->timestamps();
         });
     }

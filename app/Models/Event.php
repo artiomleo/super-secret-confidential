@@ -12,6 +12,7 @@ class Event extends Model
       'email',
       'phone_number',
       'start_time',
+      'end_time',
       'service_id',
       'user_id'
     ];

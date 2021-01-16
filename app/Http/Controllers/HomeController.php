@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Service;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -58,14 +60,16 @@ class HomeController extends Controller
         return view('event-create');
     }
 
-    public function eventCreateSubmit(Request $request)
+    public static function eventCreateSubmit(Request $request)
     {
         $payload = $request->input();
-        $payload['user_id'] = Auth::id();
+        $service = Service::query()->where('id', $payload['service_id'])->first();
+        $payload['user_id'] = Auth::id() ?? null;
+        $payload['end_time'] = Carbon::createFromDate($payload['start_time'])->addMinutes($service->duration)->format('Y-m-d\TH:i');
         $payload['service_id'] = (int) $payload['service_id'];
 
         Event::query()->create($payload);
 
-        return redirect('/my-events');
+        return $payload['user_id'] ? redirect('/my-events?event=success') : redirect('/?event=success');
     }
 }

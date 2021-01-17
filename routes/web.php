@@ -30,7 +30,7 @@ Route::get('/events', [App\Http\Controllers\HomeController::class, 'events'])->n
 
 Route::get('/event-create', ['middleware' =>'web', function(){
     return view('event-create');
-}]);
+}])->name('eventCreate');
 
 Route::post('/event-create-submit', ['middleware' =>'web', function(\Illuminate\Http\Request $request){
     return App\Http\Controllers\HomeController::eventCreateSubmit($request);
@@ -39,3 +39,8 @@ Route::post('/event-create-submit', ['middleware' =>'web', function(\Illuminate\
 Route::get('/my-events', [App\Http\Controllers\HomeController::class, 'myEvents'])->name('myEvents');
 
 Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout']);
+
+Route::get('/fullcalendar', [\App\Http\Controllers\FullCalendarController::class, 'index']);
+
+Route::post('/fullcalendar/create', [\App\Http\Controllers\FullCalendarController::class, 'create']);
+

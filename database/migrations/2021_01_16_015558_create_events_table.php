@@ -18,8 +18,8 @@ class CreateEventsTable extends Migration
             $table->string('title');
             $table->string('email');
             $table->string('phone_number');
-            $table->timestamp('start')->unique();
-            $table->timestamp('end');
+            $table->timestamp('start')->unique()->nullable();
+            $table->timestamp('end')->nullable();
             $table->foreignId('service_id')->constrained('services');
             $table->foreignId('user_id')->nullable()->constrained('users');
             $table->timestamps();

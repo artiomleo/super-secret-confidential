@@ -170,6 +170,10 @@ body {
     background: #dedede;
 }
 
+.slides{ position: relative; overflow: auto; }
+     .slides li {list-style:none; }
+         .slides ul li {float: left; }
+
 .nav-link.active {
     color: #383838;
 }
@@ -179,7 +183,7 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
-    background: url("/img/formular.jpg") no-repeat bottom;
+    background: linear-gradient(rgba(190, 161, 161, 0.4), rgba(190, 161, 161, 0.4)), url("/img/formular.jpg") no-repeat bottom;
     background-size: cover;
     padding: 30px;
 }

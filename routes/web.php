@@ -30,6 +30,4 @@ Route::post('/event-create-submit', [App\Http\Controllers\HomeController::class,
 
 Route::get('/my-events', [App\Http\Controllers\HomeController::class, 'myEvents'])->name('myEvents');
 
-Route::get('/register', [App\Http\Controllers\Auth\LoginController::class, 'register'])->name('register');
-
 Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout']);

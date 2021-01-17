@@ -29,6 +29,7 @@
         Te-ai programat cu succes!
     </div>
 @endif
+
 <?php echo View::make('layouts.footer') ?>
 </body>
 </html>

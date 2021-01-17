@@ -170,6 +170,10 @@ body {
     background: #dedede;
 }
 
+.slides{ position: relative; overflow: auto; }
+     .slides li {list-style:none; }
+         .slides ul li {float: left; }
+
 .nav-link.active {
     color: #383838;
 }

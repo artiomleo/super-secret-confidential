@@ -18,10 +18,6 @@
             font-family: 'Nunito';
         }
     </style>
-
-    <link href="{{ asset('css/mystyle.scss') }}" rel="stylesheet">
-
-
 </head>
 <body class="antialiased">
 <?php echo View::make('fullcalender') ?>

@@ -8,6 +8,7 @@ class Event extends Model
 {
     protected $fillable = [
       'title',
+      'name',
       'email',
       'phone_number',
       'start',

@@ -68,6 +68,8 @@ class HomeController extends Controller
         $payload['start'] = Carbon::createFromDate($payload['start'])->format('Y-m-d\TH:i');
         $payload['end'] = Carbon::createFromDate($payload['start'])->addMinutes($service->duration)->format('Y-m-d\TH:i');
         $payload['service_id'] = (int) $payload['service_id'];
+        $service = Service::query()->where('id', $payload['service_id'])->first();
+        $payload['title'] = $service->name . ' - ' . $payload['name'] . ' - ' . $payload['phone_number'] . '        Durata: ' . $service->duration . ' minute';
 
         Event::query()->create($payload);
 

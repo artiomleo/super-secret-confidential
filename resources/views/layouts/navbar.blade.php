@@ -1,7 +1,6 @@
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
 <div class="header">
     <div class="top-nav container">
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
         <nav class="navbar navbar-expand-sm bg-pink">
             <ul class="navbar-nav">

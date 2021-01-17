@@ -33,14 +33,14 @@ class FullCalendarController extends Controller
     {
         return Event::query()->whereDate('start', '>=', $start)
             ->whereDate('end', '<=', $end)
-            ->get(['id', 'title', 'start', 'end']);
+            ->get(['id', 'title', 'start', 'end', 'phone_number']);
     }
 
     public function getUserEvents($user, $start, $end)
     {
         return Event::query()->where('user_id', $user->id)->whereDate('start', '>=', $start)
             ->whereDate('end', '<=', $end)
-            ->get(['id', 'title', 'start', 'end']);
+            ->get(['id', 'title', 'start', 'end', 'phone_number']);
     }
 
     public function update(Request $request)

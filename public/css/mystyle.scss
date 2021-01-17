@@ -194,7 +194,6 @@ body {
     font-size: 18px;
 }
 
-/* [THE CONTAINER] */
 #slideshow {
     margin: 0 auto;
     overflow: hidden;
@@ -202,17 +201,13 @@ body {
     background: #000;
 }
 
-/* [THE SLIDES] */
 #slideshow, #slides img {
     width: 100%;
-    /* [CHANGE THE SIZE AS YOU SEE FIT] */
     max-width: 1000px;
     height: 376px;
 }
 
 #slides img {
-    /* OBJECT-FIT: PLAY WITH WHICHEVER WORKS BEST */
-    /* fill | contain | cover | none | scale-down */
     object-fit: cover;
     transition: all 1s;
     visibility: visible;
@@ -224,7 +219,6 @@ body {
     opacity: 0.3;
 }
 
-/* [CONTROLS + CAPTION] */
 #slide-left, #slide-right, #slide-caption {
     position: absolute;
 }
@@ -298,4 +292,14 @@ body {
     text-align: center;
     margin: 20px 0;
     color: #846e53;
+}
+
+.date-error__wrapper {
+    margin-top: -12px;
+    height: 35px;
+}
+
+#dateErrorMessage {
+    font-size: 18px;
+    color: #f73131;
 }

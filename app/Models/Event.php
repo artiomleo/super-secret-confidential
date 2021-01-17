@@ -2,18 +2,22 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
     protected $fillable = [
-      'name',
+      'title',
       'email',
       'phone_number',
-      'start_time',
-      'end_time',
+      'start',
+      'end',
       'service_id',
       'user_id'
     ];
+
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 }

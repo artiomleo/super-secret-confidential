@@ -15,11 +15,11 @@ class CreateEventsTable extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('title');
             $table->string('email');
             $table->string('phone_number');
-            $table->timestamp('start_time');
-            $table->timestamp('end_time');
+            $table->timestamp('start')->unique();
+            $table->timestamp('end');
             $table->foreignId('service_id')->constrained('services');
             $table->foreignId('user_id')->nullable()->constrained('users');
             $table->timestamps();

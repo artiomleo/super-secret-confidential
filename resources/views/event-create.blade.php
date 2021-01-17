@@ -31,6 +31,10 @@
             filter(departmentSelect.value)
         }
 
+        function updateValue(e) {
+            console.log(e.target.value)
+        }
+
         function filter(departmentId) {
             var select = document.getElementById("service");
             var form = document.getElementById("formgroup");
@@ -51,6 +55,12 @@
         }
 
         $(function () {
+            let dbEvents = {!! $events !!};
+            let events = []
+            Object.values(dbEvents).forEach(function(key) {
+                events.push(key.start)
+            })
+
             $('#datetimepicker1').datetimepicker({
                 minDate: new Date(),
                 daysOfWeekDisabled: [0, 1],
@@ -58,8 +68,24 @@
                     "01/16/2021 00:53"
                 ],
                 enabledHours: [9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
-                stepping: 30
+                stepping: 30,
+            }).on('dp.change', function (e) {
+                const date = moment(e.date._d).format('YYYY-MM-DD HH:mm:ss')
+                if (events.indexOf(date) !== -1) {
+                    $('#submitbutton').attr('disabled', 'disabled');
+                    $('#dateErrorMessage').removeClass('hidden');
+                } else {
+                    $('#submitbutton').removeAttr('disabled');
+                    $('#dateErrorMessage').addClass('hidden');
+                }
             });
+
+            if (events.indexOf(moment($('#datetimepicker1_input').val()).format('YYYY-MM-DD HH:mm:ss')) !== -1) {
+                $('#submitbutton').attr('disabled', 'disabled');
+                $('#dateErrorMessage').removeClass('hidden');
+            } else {
+                $('#dateErrorMessage').addClass('hidden');
+            }
         });
     </script>
     <style>
@@ -77,7 +103,7 @@
             <div class="form-group">
                 <label for="exampleInputEmail1">Nume</label>
                 <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                       placeholder="Nume" name="name" required>
+                       placeholder="Nume" name="title" required>
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Email</label>
@@ -121,13 +147,15 @@
             <div class="form-group">
                 <strong> Data: </strong>
                 <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" name="start_time"/>
+                    <input type='text' class="form-control" id="datetimepicker1_input" name="start" required />
                     <span class="input-group-addon">
                    <span class="glyphicon glyphicon-calendar"></span>
                     </span>
                 </div>
             </div>
-            <p class="">Aceasta data este ocupata</p>
+            <div class="date-error__wrapper">
+                <p id="dateErrorMessage" class="hidden">Această dată este ocupată</p>
+            </div>
             <button type="submit" class="btn btn-primary" id="submitbutton">
                 Submit
             </button>

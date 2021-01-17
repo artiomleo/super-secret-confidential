@@ -1,7 +1,5 @@
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-<link href="{{ asset('css/mystyle.scss') }}" rel="stylesheet">
-
 <div class="header">
     <div class="top-nav container">
 
@@ -28,16 +26,16 @@
                        href="/event-create">Programează-te</a>
                 </li>
                 @if(Illuminate\Support\Facades\Auth::check() && !Illuminate\Support\Facades\Auth::user()->isAdmin())
-                    <li class="nav-item">
-                        <a class="nav-link {{ \Route::current()->getName() == 'myEvents' ? 'active' : '' }}"
-                           href="/my-events">Programările mele</a>
-                    </li>
-                    <li class="nav-item">
-                        @elseif(Illuminate\Support\Facades\Auth::check() && Illuminate\Support\Facades\Auth::user()->isAdmin())
-                            <a class="nav-link {{ \Route::current()->getName() === 'events' ? 'active' : '' }} "
-                               href="/events">Programările clientilor</a>
-                        @endif
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ \Route::current()->getName() == 'myEvents' ? 'active' : '' }}"
+                       href="/my-events">Programările mele</a>
+                </li>
+                @elseif(Illuminate\Support\Facades\Auth::check() && Illuminate\Support\Facades\Auth::user()->isAdmin())
+                <li class="nav-item">
+                    <a class="nav-link {{ \Route::current()->getName() === 'events' ? 'active' : '' }} "
+                       href="/events">Programările clientilor</a>
+                </li>
+                @endif
             </ul>
         </nav>
         <div class="logo">

@@ -10,8 +10,4 @@ class Service extends Model
     protected $fillable = [
         'duration'
     ];
-
-    public function department() {
-        $this->belongsTo(Department::class);
-    }
 }

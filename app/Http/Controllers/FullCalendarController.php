@@ -38,38 +38,16 @@ class FullCalendarController extends Controller
 
     public function getUserEvents($user, $start, $end)
     {
-        return $user->events()->whereDate('start', '>=', $start)
+        return Event::query()->where('user_id', $user->id)->whereDate('start', '>=', $start)
             ->whereDate('end', '<=', $end)
             ->get(['id', 'title', 'start', 'end']);
     }
-
-    public function create(Request $request)
-    {
-        $event = Event::query()->where('start_time',  $request->start)->first();
-
-        if ($event) {
-            return 'ceva message de eroare';
-        }
-
-        $user = $request->user();
-
-        $insertArr = [
-            'title' => $request->title,
-            'start' => $request->start,
-            'end' => $request->end,
-            'user_id' => $user->id
-        ];
-        $event = Event::insert($insertArr);
-
-        return response()->json($event);
-    }
-
 
     public function update(Request $request)
     {
         $where = array('id' => $request->id);
         $updateArr = ['title' => $request->title, 'start' => $request->start, 'end' => $request->end];
-        $event = Event::where($where)->update($updateArr);
+        $event = Event::query()->where($where)->update($updateArr);
 
         return response()->json($event);
     }
@@ -77,7 +55,7 @@ class FullCalendarController extends Controller
 
     public function destroy(Request $request)
     {
-        $event = Event::where('id', $request->id)->delete();
+        $event = Event::query()->where('id', $request->id)->delete();
 
         return response()->json($event);
     }

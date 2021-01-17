@@ -29,7 +29,7 @@ Route::get('/despre-noi', ['middleware' => ['web'], function(){
 Route::get('/events', [App\Http\Controllers\HomeController::class, 'events'])->name('events');
 
 Route::get('/event-create', ['middleware' =>'web', function(){
-    return view('event-create');
+    return view('event-create')->with('events', collect(\App\Models\Event::query()->get('start'))->toJson());
 }])->name('eventCreate');
 
 Route::post('/event-create-submit', ['middleware' =>'web', function(\Illuminate\Http\Request $request){
@@ -42,5 +42,7 @@ Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout
 
 Route::get('/fullcalendar', [\App\Http\Controllers\FullCalendarController::class, 'index']);
 
-Route::post('/fullcalendar/create', [\App\Http\Controllers\FullCalendarController::class, 'create']);
+Route::post('/fullcalendar/update', [\App\Http\Controllers\FullCalendarController::class, 'update']);
+
+Route::post('/fullcalendar/delete', [\App\Http\Controllers\FullCalendarController::class, 'destroy']);
 

@@ -17,9 +17,6 @@
         body {
             font-family: 'Nunito';
         }
-        .footer {
-            position: absolute !important;
-        }
     </style>
 
     <link href="{{ asset('css/mystyle.scss') }}" rel="stylesheet">
@@ -32,20 +29,7 @@
         Te-ai programat cu succes!
     </div>
 @endif
-<div class="d-flex justify-content-lg-around">
-    @foreach(App\Models\Event::query()->where([
-                'user_id' => \Illuminate\Support\Facades\Auth::id()
-            ])->get() as $event)
-        <div>
-            Programare numarul: {{$event->id}}
-            <p>{{ $event->name }}</p>
-            <p>{{ $event->email }}</p>
-            <p>{{ $event->phone_number }}</p>
-            <p>{{ $event->start_time }}</p>
-            {{App\Models\Service::query()->where('id', $event->service_id)->first()->name}}
-        </div>
-    @endforeach
-</div>
+<?php echo View::make('fullcalender') ?>
 <?php echo View::make('layouts.footer') ?>
 </body>
 </html>

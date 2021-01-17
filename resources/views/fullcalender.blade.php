@@ -24,13 +24,6 @@
 </body>
 <script>
     $(document).ready(function () {
-
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
         let calendar = $('#calendar').fullCalendar({
             header: {
                 left: 'prev,next today',
@@ -50,45 +43,13 @@
             selectable: true,
             selectHelper: true,
 
-            select: function (start, end, allDay) {
-                let title = prompt('Event Title:');
-
-                if (title) {
-                    var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
-                    var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
-                    let data = {
-                        title: title,
-                        start: start,
-                        end: end,
-                    };
-                    $.ajax({
-                        url: "/fullcalendar/create",
-                        data: data,
-                        type: "POST",
-                        success: function (data) {
-                            displayMessage("Added Successfully");
-                        }
-                    });
-                    calendar.fullCalendar('renderEvent',
-                        {
-                            title: title,
-                            start: start,
-                            end: end,
-                            allDay: allDay
-                        },
-                        true
-                    );
-                }
-                calendar.fullCalendar('unselect');
-            },
-
             eventDrop: function (event, delta) {
 
                 const start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
                 const end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
 
                 let data = {
-                    title: title,
+                    title: event.title,
                     start: start,
                     end: end,
                     id: event.id
@@ -103,6 +64,7 @@
                     }
                 });
             },
+
             eventClick: function (event) {
                 const deleteMsg = confirm("Do you really want to delete?");
 

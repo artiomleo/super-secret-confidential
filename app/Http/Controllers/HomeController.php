@@ -65,12 +65,18 @@ class HomeController extends Controller
         $payload = $request->input();
         $service = Service::query()->where('id', $payload['service_id'])->first();
         $payload['user_id'] = Auth::id() ?? null;
-        $payload['start_time'] = Carbon::createFromDate($payload['start_time'])->format('Y-m-d\TH:i');
-        $payload['end_time'] = Carbon::createFromDate($payload['start_time'])->addMinutes($service->duration)->format('Y-m-d\TH:i');
+        $payload['start'] = Carbon::createFromDate($payload['start'])->format('Y-m-d\TH:i');
+        $payload['end'] = Carbon::createFromDate($payload['start'])->addMinutes($service->duration)->format('Y-m-d\TH:i');
         $payload['service_id'] = (int) $payload['service_id'];
 
         Event::query()->create($payload);
 
-        return $payload['user_id'] ? redirect('/my-events?event=success') : redirect('/?event=success');
+        $returnType = [
+            $payload['user_id'] => redirect('/my-events?event=success'),
+            null => redirect('/?event=success'),
+            true => redirect('/events')
+        ];
+
+        return $returnType[Auth::id() ?: $payload['user_id']];
     }
 }

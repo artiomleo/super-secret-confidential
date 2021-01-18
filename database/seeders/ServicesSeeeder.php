@@ -11,31 +11,31 @@ class ServicesSeeeder extends Seeder
     {
         Service::query()->create([
             'name' => 'Tuns păr scurt',
-            'duration' => 25,
+            'duration' => 30,
             'department_id' => 1
         ]);
 
         Service::query()->create([
             'name' => 'Tuns păr mediu',
-            'duration' => 35,
+            'duration' => 30,
             'department_id' => 1
         ]);
 
         Service::query()->create([
             'name' => 'Tuns păr lung',
-            'duration' => 50,
+            'duration' => 60,
             'department_id' => 1
         ]);
 
         Service::query()->create([
             'name' => 'Aranjat de zi',
-            'duration' => 20,
+            'duration' => 30,
             'department_id' => 1
         ]);
 
         Service::query()->create([
             'name' => 'Aranjat de gală',
-            'duration' => 50,
+            'duration' => 60,
             'department_id' => 1
         ]);
 
@@ -47,13 +47,13 @@ class ServicesSeeeder extends Seeder
 
         Service::query()->create([
             'name' => 'Spălat',
-            'duration' => 25,
+            'duration' => 30,
             'department_id' => 1
         ]);
 
         Service::query()->create([
             'name' => 'Tratament de hidratare',
-            'duration' => 40,
+            'duration' => 30,
             'department_id' => 1
         ]);
 
@@ -65,7 +65,7 @@ class ServicesSeeeder extends Seeder
 
         Service::query()->create([
             'name' => 'Tratament de regenerare',
-            'duration' => 35,
+            'duration' => 30,
             'department_id' => 1
         ]);
 
@@ -100,14 +100,8 @@ class ServicesSeeeder extends Seeder
         ]);
 
         Service::query()->create([
-            'name' => 'Tratament facial pentru curățarea imperfecțiunilor',
-            'duration' => 90,
-            'department_id' => 2
-        ]);
-
-        Service::query()->create([
             'name' => 'Pensat',
-            'duration' => 20,
+            'duration' => 30,
             'department_id' => 2
         ]);
 
@@ -155,13 +149,13 @@ class ServicesSeeeder extends Seeder
 
         Service::query()->create([
             'name' => 'Pedichiura cu gel',
-            'duration' => 50,
+            'duration' => 60,
             'department_id' => 4
         ]);
 
         Service::query()->create([
             'name' => 'Pedichiura semipermanentă',
-            'duration' => 40,
+            'duration' => 30,
             'department_id' => 4
         ]);
     }

@@ -14,6 +14,13 @@
     .fc th, .fc td {
         border-color: black;
     }
+
+    .fc-content {
+        white-space: normal !important;
+        display: flex;
+        flex-direction: column;
+        word-break: break-word;
+    }
 </style>
 <body>
 
@@ -24,6 +31,13 @@
 </body>
 <script>
     $(document).ready(function () {
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
         let calendar = $('#calendar').fullCalendar({
             header: {
                 left: 'prev,next today',

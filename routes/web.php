@@ -29,7 +29,10 @@ Route::get('/despre-noi', ['middleware' => ['web'], function(){
 Route::get('/events', [App\Http\Controllers\HomeController::class, 'events'])->name('events');
 
 Route::get('/event-create', ['middleware' =>'web', function(){
-    return view('event-create')->with('events', collect(\App\Models\Event::query()->get('start'))->toJson());
+    return view('event-create')->with([
+        'events' => collect(\App\Models\Event::query()->select('start', 'end')->get())->toJson(),
+        'services' => collect(\App\Models\Service::query()->select('id', 'duration', 'name')->get())->toJson(),
+    ]);
 }])->name('eventCreate');
 
 Route::post('/event-create-submit', ['middleware' =>'web', function(\Illuminate\Http\Request $request){

@@ -28,6 +28,14 @@ Route::get('/despre-noi', ['middleware' => ['web'], function(){
 
 Route::get('/events', [App\Http\Controllers\HomeController::class, 'events'])->name('events');
 
+Route::get('/reviews', ['middleware' =>'web', function(){
+    return view('reviews')->with([
+        'reviews' => App\Models\Review::query()->get(),
+    ]);
+}])->name('reviews');
+
+Route::post('/reviews/delete', [\App\Http\Controllers\HomeController::class, 'deleteReview']);
+
 Route::get('/event-create', ['middleware' =>'web', function(){
     return view('event-create')->with([
         'events' => collect(\App\Models\Event::query()->select('start', 'end')->get())->toJson(),
@@ -39,6 +47,8 @@ Route::post('/event-create-submit', ['middleware' =>'web', function(\Illuminate\
     return App\Http\Controllers\HomeController::eventCreateSubmit($request);
 }]);
 
+Route::post('/review-create-submit', [App\Http\Controllers\HomeController::class, 'reviewCreate'])->name('reviewCreate');
+
 Route::get('/my-events', [App\Http\Controllers\HomeController::class, 'myEvents'])->name('myEvents');
 
 Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout']);
@@ -48,4 +58,5 @@ Route::get('/fullcalendar', [\App\Http\Controllers\FullCalendarController::class
 Route::post('/fullcalendar/update', [\App\Http\Controllers\FullCalendarController::class, 'update']);
 
 Route::post('/fullcalendar/delete', [\App\Http\Controllers\FullCalendarController::class, 'destroy']);
+
 

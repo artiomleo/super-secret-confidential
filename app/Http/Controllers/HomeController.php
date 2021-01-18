@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Review;
 use App\Models\Service;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -55,9 +56,32 @@ class HomeController extends Controller
         return view('events');
     }
 
+    public function reviews()
+    {
+        return view('reviews');
+    }
+
+    public function deleteReview(Request $request)
+    {
+        $review = Review::find($request->input('id'));
+
+        $review->delete();
+    }
+
     public function eventCreate()
     {
         return view('event-create');
+    }
+
+    public function reviewCreate(Request $request)
+    {
+        $payload = $request->input();
+        $userId = Auth::id();
+        $payload['user_id'] = $userId;
+
+        Review::query()->create($payload);
+
+        return redirect('/home?event=successReview');
     }
 
     public static function eventCreateSubmit(Request $request)

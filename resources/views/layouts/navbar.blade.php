@@ -17,6 +17,10 @@
                     </li>
                 @endif
                 <li class="nav-item">
+                    <a class="nav-link {{ \Route::current()->getName() === 'home' ? 'active' : '' }}"
+                       href="/home">Home</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link {{ \Route::current()->getName() === 'despreNoi' ? 'active' : '' }}"
                        href="/despre-noi">Despre noi</a>
                 </li>
@@ -32,7 +36,11 @@
                 @elseif(Illuminate\Support\Facades\Auth::check() && Illuminate\Support\Facades\Auth::user()->isAdmin())
                 <li class="nav-item">
                     <a class="nav-link {{ \Route::current()->getName() === 'events' ? 'active' : '' }} "
-                       href="/events">Programările clientilor</a>
+                       href="/events">Programările clienților</a>
+                </li>
+                    <li class="nav-item">
+                    <a class="nav-link {{ \Route::current()->getName() === 'reviews' ? 'active' : '' }} "
+                       href="/reviews">Recenziile clienților</a>
                 </li>
                 @endif
             </ul>

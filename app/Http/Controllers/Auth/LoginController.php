@@ -35,7 +35,7 @@ class LoginController extends Controller
             return redirect()->route('events');
         }
 
-        return redirect()->route('despreNoi');
+        return redirect()->route('home');
     }
 
 

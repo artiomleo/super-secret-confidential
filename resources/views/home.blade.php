@@ -36,6 +36,33 @@
     </div>
 @endif
 
+<div class="slider">
+    <input type="radio" name="slider" title="slide1" checked="checked" class="slider__nav"/>
+    <input type="radio" name="slider" title="slide2" class="slider__nav"/>
+    <input type="radio" name="slider" title="slide3" class="slider__nav"/>
+    <input type="radio" name="slider" title="slide4" class="slider__nav"/>
+    <div class="slider__inner">
+        @foreach(App\Models\Review::query()->where('active', true)->get() as $review)
+            <div class="slider__contents">
+                <h2 class="slider__caption">
+                    {{$review->user->name}}
+                    <p style="margin-bottom: 0px; margin-top: 10px;">
+                        <i class="{{ $review->rating == 1 || $review->rating == 2 || $review->rating == 3 || $review->rating == 4 || $review->rating == 5 ? 'fa' : 'far' }} fa-star"></i>
+                        <i class="{{ $review->rating == 2 || $review->rating == 3 || $review->rating == 4 || $review->rating == 5 ? 'fa' : 'far' }} fa-star"></i>
+                        <i class="{{ $review->rating == 3 || $review->rating == 4 || $review->rating == 5 ? 'fa' : 'far' }} fa-star"></i>
+                        <i class="{{ $review->rating == 4 || $review->rating == 5 ? 'fa' : 'far' }} fa-star"></i>
+                        <i class="{{ $review->rating == 5 ? 'fa' : 'far' }} fa-star"></i>
+                    </p>
+                </h2>
+                <p class="slider__txt">
+                    {{ strlen($review->description) > 200 ? strip_tags(substr($review->description, 0, 200)) . " ..." : strip_tags(substr($review->description, 0, 200)) }}
+                </p>
+            </div>
+        @endforeach
+    </div>
+</div>
+
+
 @if(Illuminate\Support\Facades\Auth::check())
     <div class="d-flex flex-row justify-content-center">
         <div class="review-form">
@@ -66,32 +93,6 @@
         </div>
     </div>
 @endif
-
-<div class="slider">
-    <input type="radio" name="slider" title="slide1" checked="checked" class="slider__nav"/>
-    <input type="radio" name="slider" title="slide2" class="slider__nav"/>
-    <input type="radio" name="slider" title="slide3" class="slider__nav"/>
-    <input type="radio" name="slider" title="slide4" class="slider__nav"/>
-    <div class="slider__inner">
-        @foreach(App\Models\Review::query()->where('active', true)->get() as $review)
-            <div class="slider__contents">
-                <h2 class="slider__caption">
-                    {{$review->user->name}}
-                    <p style="margin-bottom: 0px; margin-top: 10px;">
-                        <i class="{{ $review->rating == 1 || $review->rating == 2 || $review->rating == 3 || $review->rating == 4 || $review->rating == 5 ? 'fa' : 'far' }} fa-star"></i>
-                        <i class="{{ $review->rating == 2 || $review->rating == 3 || $review->rating == 4 || $review->rating == 5 ? 'fa' : 'far' }} fa-star"></i>
-                        <i class="{{ $review->rating == 3 || $review->rating == 4 || $review->rating == 5 ? 'fa' : 'far' }} fa-star"></i>
-                        <i class="{{ $review->rating == 4 || $review->rating == 5 ? 'fa' : 'far' }} fa-star"></i>
-                        <i class="{{ $review->rating == 5 ? 'fa' : 'far' }} fa-star"></i>
-                    </p>
-                </h2>
-                <p class="slider__txt">
-                    {{ strlen($review->description) > 200 ? strip_tags(substr($review->description, 0, 200)) . " ..." : strip_tags(substr($review->description, 0, 200)) }}
-                </p>
-            </div>
-        @endforeach
-    </div>
-</div>
 
 <?php echo View::make('layouts.footer') ?>
 </body>

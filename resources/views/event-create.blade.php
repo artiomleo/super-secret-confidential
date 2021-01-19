@@ -44,17 +44,17 @@
         <form class="py-5 my-5 w-50 inputs-card" action="/event-create-submit" method="POST">
             @csrf
             <div class="form-group">
-                <label for="exampleInputEmail1">Nume</label>
+                <label for="exampleInputEmail1">Nume:</label>
                 <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                        placeholder="Nume" name="name" required>
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Email</label>
+                <label for="exampleInputPassword1">Email:</label>
                 <input type="email" class="form-control" id="exampleInputPassword1" placeholder="Email" name="email"
                        required>
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Numar de telefon</label>
+                <label for="exampleInputPassword1">Număr de telefon:</label>
                 <input type="text" class="form-control" id="exampleInputPassword1" name="phone_number"
                        placeholder="Numar de telefon" required>
             </div>
@@ -101,7 +101,7 @@
                 <p id="dateErrorMessage" class="hidden">Această dată este ocupată</p>
             </div>
             <button type="submit" class="btn btn-primary" id="submitbutton">
-                Submit
+                Trimite programarea!
             </button>
         </form>
     </div>

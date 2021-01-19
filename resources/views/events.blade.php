@@ -20,7 +20,7 @@
     </style>
 </head>
 <body class="antialiased">
-<?php echo View::make('fullcalender') ?>
-<?php echo View::make('layouts.footer') ?>
+@include('fullcalender')
+@include('layouts.footer')
 </body>
 </html>

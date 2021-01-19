@@ -1,5 +1,13 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\FullCalendarController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ReviewController;
+use App\Models\Event;
+use App\Models\Service;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -16,47 +24,43 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', ['middleware' =>'guest', function(){
+Route::get('/', ['middleware' =>'guest', function() {
     return view('home');
 }]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
+Route::get('/home', [HomeController::class, 'home'])->name('home');
 
-Route::get('/despre-noi', ['middleware' => ['web'], function(){
+Route::get('/despre-noi', ['middleware' => 'web', function() {
     return view('about');
 }])->name('despreNoi');
 
-Route::get('/events', [App\Http\Controllers\HomeController::class, 'events'])->name('events');
-
-Route::get('/reviews', ['middleware' =>'web', function(){
+Route::get('/reviews', ['middleware' => 'web', function() {
     return view('reviews')->with([
         'reviews' => App\Models\Review::query()->get(),
     ]);
 }])->name('reviews');
+Route::post('/review-create-submit', [ReviewController::class, 'reviewCreate'])->name('reviewCreate');
+Route::post('/reviews/edit', [ReviewController::class, 'editReview']);
+Route::post('/reviews/delete', [ReviewController::class, 'deleteReview']);
 
-Route::post('/reviews/delete', [\App\Http\Controllers\HomeController::class, 'deleteReview']);
-
-Route::get('/event-create', ['middleware' =>'web', function(){
+Route::get('/event-create', ['middleware' => 'web', function() {
     return view('event-create')->with([
-        'events' => collect(\App\Models\Event::query()->select('start', 'end')->get())->toJson(),
-        'services' => collect(\App\Models\Service::query()->select('id', 'duration', 'name')->get())->toJson(),
+        'events' => collect(Event::query()->select('start', 'end')->get())->toJson(),
+        'services' => collect(Service::query()->select('id', 'duration', 'name')->get())->toJson(),
     ]);
 }])->name('eventCreate');
 
-Route::post('/event-create-submit', ['middleware' =>'web', function(\Illuminate\Http\Request $request){
-    return App\Http\Controllers\HomeController::eventCreateSubmit($request);
+Route::get('/events', [EventController::class, 'events'])->name('events');
+Route::get('/my-events', [EventController::class, 'myEvents'])->name('myEvents');
+Route::post('/event-create-submit', ['middleware' =>'web', function(Request $request) {
+    return EventController::eventCreateSubmit($request);
 }]);
 
-Route::post('/review-create-submit', [App\Http\Controllers\HomeController::class, 'reviewCreate'])->name('reviewCreate');
+Route::get('/logout', [LoginController::class, 'logout']);
 
-Route::get('/my-events', [App\Http\Controllers\HomeController::class, 'myEvents'])->name('myEvents');
+Route::get('/fullcalendar', [FullCalendarController::class, 'index']);
+Route::post('/fullcalendar/update', [FullCalendarController::class, 'update']);
+Route::post('/fullcalendar/delete', [FullCalendarController::class, 'destroy']);
 
-Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout']);
-
-Route::get('/fullcalendar', [\App\Http\Controllers\FullCalendarController::class, 'index']);
-
-Route::post('/fullcalendar/update', [\App\Http\Controllers\FullCalendarController::class, 'update']);
-
-Route::post('/fullcalendar/delete', [\App\Http\Controllers\FullCalendarController::class, 'destroy']);
 
 

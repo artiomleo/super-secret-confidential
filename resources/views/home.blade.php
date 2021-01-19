@@ -62,7 +62,6 @@
     </div>
 </div>
 
-
 @if(Illuminate\Support\Facades\Auth::check())
     <div class="d-flex flex-row justify-content-center">
         <div class="review-form">
@@ -94,6 +93,6 @@
     </div>
 @endif
 
-<?php echo View::make('layouts.footer') ?>
+@include('layouts.footer')
 </body>
 </html>

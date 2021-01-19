@@ -8,7 +8,6 @@
 
     <title>Laravel</title>
 
-    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Tangerine:bold,bolditalic|Inconsolata:italic|Droid+Sans"
           rel="stylesheet">
@@ -54,24 +53,18 @@
     </div>
 
     <div id="slideshow">
-        <!-- [PUT YOUR SLIDES IN HERE] -->
         <div id="slides">
             <img src="/img/fiole.jpg" data-caption="Cele mai bune cosmetice"/>
-
             <img src="/img/londaprod.jpg" data-caption="Produse profesionale de stilizare"/>
-
             <img src="/img/prodLonda.jpg" data-caption="Produse pentru toate tipurile de păr"/>
-
             <img src="/img/perii.jpg" data-caption="Cele mai bune ustensile"/>
-
         </div>
 
-        <!-- [CONTROLS + CAPTION] -->
         <div id="slide-left">&lt;</div>
         <div id="slide-right">&gt;</div>
         <div id="slide-caption"></div>
     </div>
 </div>
-<?php echo View::make('layouts.footer') ?>
+@include('layouts.footer')
 </body>
 </html>

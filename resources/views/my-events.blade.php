@@ -25,7 +25,7 @@
         Te-ai programat cu succes!
     </div>
 @endif
-<?php echo View::make('fullcalender') ?>
-<?php echo View::make('layouts.footer') ?>
+@include('fullcalender')
+@include('layouts.footer')
 </body>
 </html>

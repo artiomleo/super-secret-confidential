@@ -18,7 +18,7 @@
                 @endif
                 <li class="nav-item">
                     <a class="nav-link {{ \Route::current()->getName() === 'home' ? 'active' : '' }}"
-                       href="/home">Home</a>
+                       href="/">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ \Route::current()->getName() === 'despreNoi' ? 'active' : '' }}"

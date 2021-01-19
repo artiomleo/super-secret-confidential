@@ -37,14 +37,12 @@
         function onDeleteClick(id) {
             const deleteMsg = confirm("Do you really want to delete?");
 
-            let data = {
-                id: id
-            };
-
             if (deleteMsg) {
                 $.ajax({
                     url: 'reviews/delete',
-                    data: data,
+                    data: {
+                        id: id
+                    },
                     type: "POST",
                     success: function (response) {
                         displayMessage("Deleted Successfully");
@@ -53,6 +51,38 @@
 
                 location.reload();
             }
+        }
+
+        function onShowClick(id) {
+            $.ajax({
+                url: 'reviews/edit',
+                data: {
+                    id: id,
+                    active: true
+                },
+                type: "POST",
+                success: function (response) {
+                    displayMessage("This review was added to homepage");
+                }
+            });
+
+            location.reload();
+        }
+
+        function onHideClick(id) {
+            $.ajax({
+                url: 'reviews/edit',
+                data: {
+                    id: id,
+                    active: false
+                },
+                type: "POST",
+                success: function (response) {
+                    displayMessage("This review was added to homepage");
+                }
+            });
+
+            location.reload();
         }
 
         function displayMessage(message) {
@@ -94,8 +124,8 @@
                                         <a href="" class="btn btn-primary btn-sm">Edit</a>
                                         <button class="btn btn-danger btn-sm" type="button" onclick="onDeleteClick({{$review->id}})">Delete</button>
                                         <br />
-                                        <button class="btn btn-success btn-sm mt-2 {{ $review->active ? 'hidden' : '' }}" type="button">Show</button>
-                                        <button class="btn btn-secondary btn-sm mt-2 {{ !$review->active ? 'hidden' : '' }}" type="button">Hide</button>
+                                        <button class="btn btn-success btn-sm mt-2 {{ $review->active ? 'hidden' : '' }}" onclick="onShowClick({{$review->id}})" type="button">Show</button>
+                                        <button class="btn btn-secondary btn-sm mt-2 {{ !$review->active ? 'hidden' : '' }}" onclick="onHideClick({{$review->id}})" type="button">Hide</button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -107,6 +137,6 @@
     </div>
 </div>
 
-<?php echo View::make('layouts.footer') ?>
+@include('layouts.footer')
 </body>
 </html>

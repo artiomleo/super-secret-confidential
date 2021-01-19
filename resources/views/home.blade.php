@@ -12,14 +12,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Tangerine:bold,bolditalic|Inconsolata:italic|Droid+Sans"
           rel="stylesheet">
-<<<<<<< HEAD
-    <link href="{{ asset('css/mystyle.scss') }}" rel="stylesheet">
-=======
     <script
         src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"
         data-auto-a11y="true"
     ></script>
->>>>>>> 790a27b5d6db9102c8d96249b87b6c2b4a749503
+
 
     <style>
         body {
@@ -95,6 +92,7 @@
     </div>
 </div>
 
+
 @if(Illuminate\Support\Facades\Auth::check())
     <div class="d-flex flex-row justify-content-center">
         <div class="review-form">
@@ -126,6 +124,6 @@
     </div>
 @endif
 
-@include('layouts.footer')
+<?php echo View::make('layouts.footer') ?>
 </body>
 </html>

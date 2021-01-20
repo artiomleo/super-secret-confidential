@@ -26,18 +26,24 @@
 </head>
 <body class="antialiased">
 <div class="container-services">
-<div class="col-md-7 d-flex flex-column justify-content-center">
+<div class="d-flex flex-column justify-content-center text-center my-5">
     <h2>Serviciile noastre</h2>
 </div>
 <div class="flex-container">
     <div class="flex-item">
-    <a href="coafor"><img src="/img/Coafor.jpg" alt="Coafor" style="width:100%"></a>
+    <a href="coafor">
+        <img class="home-image" src="/img/Coafor.jpg" alt="Coafor" style="width:100%">
+    </a>
     </div>
     <div class="flex-item">
-        <img src="/img/facial_treatment.jpg" alt="Cosmetica" style="width:100%">
+        <a href="coafor">
+            <img class="home-image" src="/img/facial_treatment.jpg" alt="Cosmetica" style="width:100%">
+        </a>
     </div>
     <div class="flex-item">
-        <img src="/img/manichiurafrench.jpg" alt="Manichiura" style="width:100%">
+        <a href="coafor">
+            <img class="home-image" src="/img/manichiurafrench.jpg" alt="Manichiura" style="width:100%">
+        </a>
     </div>
 </div>
 </div>
@@ -118,7 +124,7 @@
                     <label for="exampleInputPassword1">Descriere</label>
                     <textarea class="form-control" name="description" id="description1" rows="3"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Trimite!</button>
             </form>
         </div>
     </div>

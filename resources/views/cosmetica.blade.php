@@ -22,8 +22,17 @@
     <script src="/js/scripts/slideshow.js"></script>
 </head>
 <body class="antialiased">
-
-
+<div class="container marketing my-5 py-5">
+    <div class="row featurette">
+        <div class="col-md-7 d-flex flex-column justify-content-center">
+            <h2 class="featurette-heading"></h2>
+            <p class="lead">Un machiaj armonios îți pune în evidență trăsăturile, nu le schimbă!</p>
+        </div>
+        <div class="col-md-5">
+            <img class="featurette-image img-fluid mx-auto" alt="500x500" style="width: 500px; height: auto;" src="/img/imaginemachiaj.png">
+        </div>
+    </div>
+</div>
 
 <?php echo View::make('layouts.footer') ?>
 </body>

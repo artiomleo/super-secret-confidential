@@ -27,31 +27,19 @@
 <body class="antialiased">
 <div class="container-services">
 <div class="col-md-7 d-flex flex-column justify-content-center">
-    <h2>Serviciile noastre</h2>
+    <h2></h2>
 </div>
 <div class="flex-container">
     <div class="flex-item">
     <a href="coafor"><img src="/img/Coafor.jpg" alt="Coafor" style="width:100%"></a>
     </div>
     <div class="flex-item">
-        <img src="/img/facial_treatment.jpg" alt="Cosmetica" style="width:100%">
+    <a href="cosmetica"><img src="/img/facial_treatment.jpg" alt="Cosmetica" style="width:100%"></a>
     </div>
     <div class="flex-item">
-        <img src="/img/manichiurafrench.jpg" alt="Manichiura" style="width:100%">
+    <a href="manichiura"><img src="/img/manichiurafrench.jpg" alt="Manichiura" style="width:100%"></a>
     </div>
 </div>
-</div>
-
-<div class="container marketing my-5 py-5">
-    <div class="row featurette">
-        <div class="col-md-7 d-flex flex-column justify-content-center">
-            <h2 class="featurette-heading">Coafor</h2>
-            <p class="lead">Lasă-ne pe noi să avem grijă de părul tău!</p>
-        </div>
-        <div class="col-md-5">
-            <img class="featurette-image img-fluid mx-auto" alt="500x500" style="width: 500px; height: auto;" src="/img/coaforr.png">
-        </div>
-    </div>
 </div>
 
 @if(request()->query('event') === 'success')
@@ -98,9 +86,9 @@
         <div class="review-form">
             <form action="/review-create-submit" method="POST">
                 @csrf
-                <p class="text-center font-weight-bolder review-form-header">Scrie-ne o recenzie</p>
+                <p class="text-center font-weight-bolder review-form-header">Acordă-ne o recenzie</p>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Ce rating ne-ai acorda ?</label>
+                    <label for="exampleInputEmail1">Ce notă ne-ai acorda ?</label>
                     <div class="rating">
                         <input type="radio" name="rating" value="5" id="rating-5">
                         <label for="rating-5"></label>
@@ -118,7 +106,7 @@
                     <label for="exampleInputPassword1">Descriere</label>
                     <textarea class="form-control" name="description" id="description1" rows="3"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Trimite recenzia</button>
             </form>
         </div>
     </div>

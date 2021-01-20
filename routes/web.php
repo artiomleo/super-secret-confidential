@@ -29,6 +29,9 @@ Route::get('/', ['middleware' =>'guest', function() {
 }]);
 
 Route::get('/home', [HomeController::class, 'home'])->name('home');
+Route::get('/coafor', [HomeController::class, 'coafor'])->name('coafor');
+Route::get('/manichiura', [HomeController::class, 'manichiura'])->name('manichiura');
+Route::get('/cosmetica', [HomeController::class, 'cosmetica'])->name('cosmetica');
 
 Route::get('/despre-noi', ['middleware' => 'web', function() {
     return view('about');

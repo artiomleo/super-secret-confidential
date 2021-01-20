@@ -71,11 +71,6 @@ Route::post('/event-create-submit', ['middleware' =>'web', function(Request $req
 Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::get('/fullcalendar', [FullCalendarController::class, 'index']);
-//Route::get('/fullcalendar', ['middleware' => 'web', function() {
-//    return view('fullcalender')->with([
-//        'authIsAdmin' => Illuminate\Support\Facades\Auth::user()->isAdmin(),
-//    ]);
-//}])->name('reviews');
 Route::post('/fullcalendar/update', [FullCalendarController::class, 'update']);
 Route::post('/fullcalendar/delete', [FullCalendarController::class, 'destroy']);
 

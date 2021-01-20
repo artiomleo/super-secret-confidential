@@ -60,7 +60,6 @@
 
             eventDrop: function (event, delta) {
                 if (!userIsAdmin) {
-                    console.log('not admin')
                     return
                 }
 
@@ -87,29 +86,28 @@
 
             eventClick: function (event) {
                 if (!userIsAdmin) {
-                    console.log('not admin')
                     return
                 }
-                console.log(userIsAdmin)
+
                 const deleteMsg = confirm("Do you really want to delete?");
 
                 const objToEmit = {
                     id: event.id
                 }
 
-                // if (deleteMsg) {
-                //     $.ajax({
-                //         type: "POST",
-                //         url: 'fullcalendar/delete',
-                //         data: objToEmit,
-                //         success: function (response) {
-                //             if (parseInt(response) > 0) {
-                //                 $('#calendar').fullCalendar('removeEvents', event.id);
-                //                 displayMessage("Deleted Successfully");
-                //             }
-                //         }
-                //     });
-                // }
+                if (deleteMsg) {
+                    $.ajax({
+                        type: "POST",
+                        url: 'fullcalendar/delete',
+                        data: objToEmit,
+                        success: function (response) {
+                            if (parseInt(response) > 0) {
+                                $('#calendar').fullCalendar('removeEvents', event.id);
+                                displayMessage("Deleted Successfully");
+                            }
+                        }
+                    });
+                }
             }
         });
     });

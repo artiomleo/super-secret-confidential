@@ -119,10 +119,22 @@ ul {
         text-align:center;
     }
 }
+
+#customers td, #customers th {
+    border: 1px solid black;
+    padding: 8px;
+}
+
 .flex-item{
     width:400px;
     margin: 10px;
     object-fit:cover;
+}
+
+.icon-text {
+    font-size: 40px;
+    margin: 15px 0;
+    font-family: "Tangerine", cursive, sans-serif;
 }
 
   @media screen and (max-width: 500px) {

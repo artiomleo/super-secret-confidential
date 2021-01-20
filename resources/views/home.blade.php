@@ -17,49 +17,19 @@
         data-auto-a11y="true"
     ></script>
 
+    <script src="/js/scripts/slideshow.js"></script>
 
     <style>
-        body {
-            font-family: 'Nunito';
+        #slideshow, #slides img {
+            max-width: 100%;
+        }
+
+        #slide-caption {
+            display: none;
         }
     </style>
 </head>
 <body class="antialiased">
-<div class="container-services">
-<div class="d-flex flex-column justify-content-center text-center my-5">
-    <h2>Serviciile noastre</h2>
-</div>
-<div class="flex-container">
-    <div class="flex-item">
-    <a href="coafor">
-        <img class="home-image" src="/img/Coafor.jpg" alt="Coafor" style="width:100%">
-    </a>
-    </div>
-    <div class="flex-item">
-        <a href="coafor">
-            <img class="home-image" src="/img/facial_treatment.jpg" alt="Cosmetica" style="width:100%">
-        </a>
-    </div>
-    <div class="flex-item">
-        <a href="coafor">
-            <img class="home-image" src="/img/manichiurafrench.jpg" alt="Manichiura" style="width:100%">
-        </a>
-    </div>
-</div>
-</div>
-
-<div class="container marketing my-5 py-5">
-    <div class="row featurette">
-        <div class="col-md-7 d-flex flex-column justify-content-center">
-            <h2 class="featurette-heading">Coafor</h2>
-            <p class="lead">Lasă-ne pe noi să avem grijă de părul tău!</p>
-        </div>
-        <div class="col-md-5">
-            <img class="featurette-image img-fluid mx-auto" alt="500x500" style="width: 500px; height: auto;" src="/img/coaforr.png">
-        </div>
-    </div>
-</div>
-
 @if(request()->query('event') === 'success')
     <div class="event-notification">
         Te-ai programat cu succes!
@@ -71,6 +41,44 @@
         Review-ul tau a fost inregistrat!
     </div>
 @endif
+
+
+<div class="container-services">
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-sm d-flex flex-column align-items-center justify-content-center">
+                <a href="coafor">
+                    <img width="60px" src="/img/cosmeticaicon.png"/>
+                </a>
+                <p class="icon-text">Coafor</p>
+            </div>
+            <div class="col-sm d-flex flex-column align-items-center justify-content-center">
+                <a href="cosmetica">
+                    <img width="60px" src="/img/manipediicon.png"/>
+                </a>
+                <p class="icon-text">Cosmetica</p>
+            </div>
+            <div class="col-sm d-flex flex-column align-items-center justify-content-center">
+                <a href="manichiura">
+                    <img width="60px" src="/img/manipediicon.png"/>
+                </a>
+                <p class="icon-text">Manichiura / perichiura</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex-container">
+        <div class="flex-item">
+            <a href="coafor"><img src="/img/Coafor.jpg" alt="Coafor" style="width:100%"></a>
+        </div>
+        <div class="flex-item">
+            <a href="cosmetica"><img src="/img/facial_treatment.jpg" alt="Cosmetica" style="width:100%"></a>
+        </div>
+        <div class="flex-item">
+            <a href="manichiura"><img src="/img/manichiurafrench.jpg" alt="Manichiura" style="width:100%"></a>
+        </div>
+    </div>
+</div>
 
 <div class="slider">
     <input type="radio" name="slider" title="slide1" checked="checked" class="slider__nav"/>
@@ -104,9 +112,9 @@
         <div class="review-form">
             <form action="/review-create-submit" method="POST">
                 @csrf
-                <p class="text-center font-weight-bolder review-form-header">Scrie-ne o recenzie</p>
+                <p class="text-center font-weight-bolder review-form-header">Acordă-ne o recenzie</p>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Ce rating ne-ai acorda ?</label>
+                    <label for="exampleInputEmail1">Ce notă ne-ai acorda ?</label>
                     <div class="rating">
                         <input type="radio" name="rating" value="5" id="rating-5">
                         <label for="rating-5"></label>
@@ -124,11 +132,24 @@
                     <label for="exampleInputPassword1">Descriere</label>
                     <textarea class="form-control" name="description" id="description1" rows="3"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Trimite!</button>
+                <button type="submit" class="btn btn-primary">Trimite recenzia</button>
             </form>
         </div>
     </div>
 @endif
+
+<div id="slideshow">
+    <div id="slides">
+        <img src="/img/fiole.jpg" data-caption="Cele mai bune cosmetice"/>
+        <img src="/img/londaprod.jpg" data-caption="Produse profesionale de stilizare"/>
+        <img src="/img/prodLonda.jpg" data-caption="Produse pentru toate tipurile de păr"/>
+        <img src="/img/perii.jpg" data-caption="Cele mai bune ustensile"/>
+    </div>
+
+    <div id="slide-left">&lt;</div>
+    <div id="slide-right">&gt;</div>
+    <div id="slide-caption"></div>
+</div>
 
 <?php echo View::make('layouts.footer') ?>
 </body>

@@ -12,12 +12,6 @@
     <link href="https://fonts.googleapis.com/css?family=Tangerine:bold,bolditalic|Inconsolata:italic|Droid+Sans"
           rel="stylesheet">
 
-    <style>
-        body {
-            font-family: 'Nunito';
-        }
-    </style>
-
     <script src="/js/scripts/slideshow.js"></script>
 </head>
 <body class="antialiased">

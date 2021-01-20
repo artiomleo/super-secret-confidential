@@ -28,9 +28,21 @@ Route::get('/', ['middleware' =>'guest', function() {
     return view('home');
 }]);
 
+Route::get('/coafor', ['middleware' =>'web', function() {
+    return view('coafor');
+}]);
+
+Route::get('/manichiura', ['middleware' =>'web', function() {
+    return view('manichiura');
+}]);
+
+Route::get('/cosmetica', ['middleware' =>'web', function() {
+    return view('cosmetica');
+}]);
+
 Route::get('/home', [HomeController::class, 'home'])->name('home');
 
-Route::get('/despre-noi', ['middleware' => 'web', function() {
+Route::get('/despreNoi', ['middleware' => 'web', function() {
     return view('about');
 }])->name('despreNoi');
 
@@ -51,7 +63,7 @@ Route::get('/event-create', ['middleware' => 'web', function() {
 }])->name('eventCreate');
 
 Route::get('/events', [EventController::class, 'events'])->name('events');
-Route::get('/my-events', [EventController::class, 'myEvents'])->name('myEvents');
+Route::get('/myEvents', [EventController::class, 'myEvents'])->name('myEvents');
 Route::post('/event-create-submit', ['middleware' =>'web', function(Request $request) {
     return EventController::eventCreateSubmit($request);
 }]);
@@ -59,6 +71,11 @@ Route::post('/event-create-submit', ['middleware' =>'web', function(Request $req
 Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::get('/fullcalendar', [FullCalendarController::class, 'index']);
+//Route::get('/fullcalendar', ['middleware' => 'web', function() {
+//    return view('fullcalender')->with([
+//        'authIsAdmin' => Illuminate\Support\Facades\Auth::user()->isAdmin(),
+//    ]);
+//}])->name('reviews');
 Route::post('/fullcalendar/update', [FullCalendarController::class, 'update']);
 Route::post('/fullcalendar/delete', [FullCalendarController::class, 'destroy']);
 

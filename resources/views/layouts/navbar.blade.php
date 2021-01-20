@@ -26,7 +26,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ \Route::current()->getName() === 'despreNoi' ? 'active' : '' }}"
-                       href="/despre-noi">Despre noi</a>
+                       href="/despreNoi">Despre noi</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ \Route::current()->getName() == 'eventCreate' ? 'active' : '' }}"
@@ -35,7 +35,7 @@
                 @if(Illuminate\Support\Facades\Auth::check() && !Illuminate\Support\Facades\Auth::user()->isAdmin())
                     <li class="nav-item">
                         <a class="nav-link {{ \Route::current()->getName() == 'myEvents' ? 'active' : '' }}"
-                           href="/my-events">Programările mele</a>
+                           href="/myEvents">Programările mele</a>
                     </li>
                 @elseif(Illuminate\Support\Facades\Auth::check() && Illuminate\Support\Facades\Auth::user()->isAdmin())
                     <li class="nav-item">
@@ -54,7 +54,7 @@
         </div>
         <div class="hero container">
             <div class="hero copy header-salon">
-                <h1 style="font-size:300%; color:#FFF5EE;">Salon Vasilica</h1>
+                <h1 style="font-size:70px !important; font-family: 'Tangerine', cursive, sans-serif; color:#FFF5EE;">Salon Vasilica</h1>
             </div>
         </div>
     </div>

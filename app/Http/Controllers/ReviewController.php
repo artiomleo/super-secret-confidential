@@ -20,11 +20,11 @@ class ReviewController extends Controller
 
     public function reviewCreate(Request $request)
     {
-        $dataFrontent = $request->input();
+        $dataFrontend = $request->input();
         $userId = Auth::id();
-        $dataFrontent['user_id'] = $userId;
+        $dataFrontend['user_id'] = $userId;
 
-        Review::query()->create($dataFrontent);
+        Review::query()->create($dataFrontend);
 
         return redirect('/home?event=successReview');
     }

@@ -19,4 +19,16 @@ class HomeController extends Controller
     {
         return view('about');
     }
+    public function coafor()
+    {
+        return view('coafor');
+    }
+    public function manichiura()
+    {
+        return view('manichiura');
+    }
+    public function cosmetica()
+    {
+        return view('cosmetica');
+    }
 }

@@ -18,7 +18,7 @@ class EventController extends Controller
 
     public function myEvents()
     {
-        return view('my-events');
+        return view('myEvents');
     }
 
     public function events()
@@ -35,9 +35,9 @@ class EventController extends Controller
     {
         $dataFrontend = $request->input();
         $service = Service::query()->where('id', $dataFrontend['service_id'])->first();
-        $authId = Auth::id();
+        $authenticatedId = Auth::id();
 
-        $dataFrontend['user_id'] = $authId ?? null;
+        $dataFrontend['user_id'] = $authenticatedId ?? null;
         $dataFrontend['start'] = Carbon::createFromDate($dataFrontend['start'])->format('Y-m-d\TH:i');
         $dataFrontend['end'] = Carbon::createFromDate($dataFrontend['start'])->addMinutes($service->duration)->format('Y-m-d\TH:i');
         $dataFrontend['service_id'] = (int) $dataFrontend['service_id'];
@@ -45,8 +45,8 @@ class EventController extends Controller
 
         Event::query()->create($dataFrontend);
 
-        if ($authId) {
-            return redirect('/my-events?event=success');
+        if ($authenticatedId) {
+            return redirect('/myEvents?event=success');
         }
         else {
             return redirect('/?event=success');

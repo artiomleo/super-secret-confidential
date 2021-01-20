@@ -53,9 +53,55 @@
             }
         }
 
-        function onShowClick(id) {
+        function onEditClick(review) {
+            const className = '.description-edit-form-' + review.id
+            const classNameTextArea = '#description-textarea-' + review.id
+            const classNameForm = '#save-form-' + review.id
+            const classNameButton = '#edit-button-' + review.id
+
+            $(classNameForm).removeClass('hidden');
+            $(classNameButton).addClass('hidden');
+            $(className).addClass('hidden');
+            $(classNameTextArea).val(review.description);
+        }
+
+        function onUpClick(id, direction) {
             $.ajax({
                 url: 'reviews/edit',
+                data: {
+                    id: id,
+                    direction: direction,
+                    active: true
+                },
+                type: "POST",
+                success: function (response) {
+                    displayMessage("This review was added to homepage");
+                }
+            });
+
+            // location.reload();
+        }
+
+        function onDownClick(id, direction) {
+            $.ajax({
+                url: 'reviews/edit',
+                data: {
+                    id: id,
+                    direction: direction,
+                    active: true
+                },
+                type: "POST",
+                success: function (response) {
+                    displayMessage("This review was added to homepage");
+                }
+            });
+
+            // location.reload();
+        }
+
+        function onShowClick(id) {
+            $.ajax({
+                url: 'reviews/' + id + '/edit',
                 data: {
                     id: id,
                     active: true
@@ -71,7 +117,7 @@
 
         function onHideClick(id) {
             $.ajax({
-                url: 'reviews/edit',
+                url: 'reviews/' + id + '/edit',
                 data: {
                     id: id,
                     active: false
@@ -103,16 +149,28 @@
                     <table class="table table-bordered">
                         <tr>
                             <th>Nume</th>
-                            <th>Name</th>
-                            <th width="180px">Star</th>
-                            <th width="130px">View</th>
+                            <th>Descriere</th>
+                            <th width="200px">Punctaj</th>
+                            <th width="200px">Actiuni</th>
                         </tr>
 
                         @if($reviews->count())
                             @foreach($reviews as $review)
                                 <tr>
-                                    <td>{{ $review->user->name }}</td>
-                                    <td>{{ $review->description }}</td>
+                                    <td>
+                                        {{ $review->user->name }}
+                                    </td>
+                                    <td>
+                                        <div class="description-edit-form-{{$review->id}} description-edit">
+                                            {{ $review->description }}
+                                        </div>
+                                        <form class="inputs-card hidden" id="save-form-{{$review->id}}" action="/reviews/{{$review->id}}/edit" method="POST">
+                                            @csrf
+                                            <textarea class="form-control form-control-review" rows="10" name="description" id="description-textarea-{{$review->id}}" aria-label="With textarea"></textarea>
+
+                                            <button class="btn btn-success btn-sm" type="submit">Save</button>
+                                        </form>
+                                    </td>
                                     <td>
                                         <i class="{{ $review->rating == 1 || $review->rating == 2 || $review->rating == 3 || $review->rating == 4 || $review->rating == 5 ? 'fa' : 'far' }} fa-star"></i>
                                         <i class="{{ $review->rating == 2 || $review->rating == 3 || $review->rating == 4 || $review->rating == 5 ? 'fa' : 'far' }} fa-star"></i>
@@ -121,13 +179,14 @@
                                         <i class="{{ $review->rating == 5 ? 'fa' : 'far' }} fa-star"></i>
                                     </td>
                                     <td>
-                                        <a href="" class="btn btn-primary btn-sm">Edit</a>
+                                        <button class="btn btn-primary btn-sm" id="edit-button-{{$review->id}}" type="button" onclick="onEditClick({{$review}})">Edit</button>
                                         <button class="btn btn-danger btn-sm" type="button" onclick="onDeleteClick({{$review->id}})">Delete</button>
                                         <br />
                                         <button class="btn btn-success btn-sm mt-2 {{ $review->active ? 'hidden' : '' }}" onclick="onShowClick({{$review->id}})" type="button">Show</button>
                                         <button class="btn btn-secondary btn-sm mt-2 {{ !$review->active ? 'hidden' : '' }}" onclick="onHideClick({{$review->id}})" type="button">Hide</button>
-                                    </td>
-                                </tr>
+                                        <i class="fa fa-arrow-up fa-1x order-arrow"  onclick="onUpClick({{$review->id}}, 'up')" aria-hidden="true"></i>
+                                        <i class="fa fa-arrow-down fa-1x order-arrow"  onclick="onDownClick({{$review->id}}, 'down')" aria-hidden="true"></i>
+                                    </td</tr>
                             @endforeach
                         @endif
                     </table>

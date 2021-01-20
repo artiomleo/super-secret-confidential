@@ -49,7 +49,7 @@ $(function () {
     })
 
     $('#datetimepicker1').datetimepicker({
-        // minDate: new Date(),
+        minDate: 'now',
         daysOfWeekDisabled: [0, 1],
         enabledHours: [9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
         stepping: 30,
@@ -57,7 +57,7 @@ $(function () {
         const date = moment(e.date._d).format(dateFormat)
 
 // verifica disbonibilitatea datii si daca nu exista o alta programare care coincide cu aceasta data si verifica daca data din calendar nu este mai mica decat azi
-        if (checkAvailableDate(date) || startEvents.indexOf(date) !== -1 || date < moment().format(dateFormat)) {
+        if (checkAvailableDate(date) || startEvents.indexOf(date) !== -1  || date < moment().format(dateFormat)) {
             $('#submitbutton').attr('disabled', 'disabled');
             $('#dateErrorMessage').removeClass('hidden');
         } else {

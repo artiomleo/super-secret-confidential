@@ -1,6 +1,10 @@
+<head>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/mystyle.scss') }}" rel="stylesheet">
+</head>
+
 <div class="header">
     <div class="top-nav container">
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
         <nav class="navbar navbar-expand-sm bg-pink">
             <ul class="navbar-nav">
@@ -29,19 +33,19 @@
                        href="/event-create">Programează-te</a>
                 </li>
                 @if(Illuminate\Support\Facades\Auth::check() && !Illuminate\Support\Facades\Auth::user()->isAdmin())
-                <li class="nav-item">
-                    <a class="nav-link {{ \Route::current()->getName() == 'myEvents' ? 'active' : '' }}"
-                       href="/my-events">Programările mele</a>
-                </li>
-                @elseif(Illuminate\Support\Facades\Auth::check() && Illuminate\Support\Facades\Auth::user()->isAdmin())
-                <li class="nav-item">
-                    <a class="nav-link {{ \Route::current()->getName() === 'events' ? 'active' : '' }} "
-                       href="/events">Programările clienților</a>
-                </li>
                     <li class="nav-item">
-                    <a class="nav-link {{ \Route::current()->getName() === 'reviews' ? 'active' : '' }} "
-                       href="/reviews">Recenziile clienților</a>
-                </li>
+                        <a class="nav-link {{ \Route::current()->getName() == 'myEvents' ? 'active' : '' }}"
+                           href="/my-events">Programările mele</a>
+                    </li>
+                @elseif(Illuminate\Support\Facades\Auth::check() && Illuminate\Support\Facades\Auth::user()->isAdmin())
+                    <li class="nav-item">
+                        <a class="nav-link {{ \Route::current()->getName() === 'events' ? 'active' : '' }} "
+                           href="/events">Programările clienților</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ \Route::current()->getName() === 'reviews' ? 'active' : '' }} "
+                           href="/reviews">Recenziile clienților</a>
+                    </li>
                 @endif
             </ul>
         </nav>

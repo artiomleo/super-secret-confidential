@@ -40,7 +40,7 @@ Route::get('/reviews', ['middleware' => 'web', function() {
     ]);
 }])->name('reviews');
 Route::post('/review-create-submit', [ReviewController::class, 'reviewCreate'])->name('reviewCreate');
-Route::post('/reviews/edit', [ReviewController::class, 'editReview']);
+Route::post('/reviews/{id}/edit', [ReviewController::class, 'editReview']);
 Route::post('/reviews/delete', [ReviewController::class, 'deleteReview']);
 
 Route::get('/event-create', ['middleware' => 'web', function() {

@@ -1,14 +1,3 @@
-<link href="{{ asset('css/mystyle.scss') }}" rel="stylesheet">
-
-<style>
-.nav-item .nav-link {
-    color: #FFF5EE !important;
-}
-.nav-link.active {
-    color: #383838 !important;
-}
-</style>
-
 <div class="footer">
     <div class="made-with">Realizat cu 💛&nbsp de Cătuna Denisa-Maria</div>
     <div class="icons follow-us">

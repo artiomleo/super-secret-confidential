@@ -33,17 +33,17 @@ class EventController extends Controller
 
     public static function eventCreateSubmit(Request $request)
     {
-        $payload = $request->input();
-        $service = Service::query()->where('id', $payload['service_id'])->first();
+        $dataFrontend = $request->input();
+        $service = Service::query()->where('id', $dataFrontend['service_id'])->first();
         $authId = Auth::id();
 
-        $payload['user_id'] = $authId ?? null;
-        $payload['start'] = Carbon::createFromDate($payload['start'])->format('Y-m-d\TH:i');
-        $payload['end'] = Carbon::createFromDate($payload['start'])->addMinutes($service->duration)->format('Y-m-d\TH:i');
-        $payload['service_id'] = (int) $payload['service_id'];
-        $payload['title'] = $service->name . ' - ' . $payload['name'] . ' - ' . $payload['phone_number'] . '        Durata: ' . $service->duration . ' minute';
+        $dataFrontend['user_id'] = $authId ?? null;
+        $dataFrontend['start'] = Carbon::createFromDate($dataFrontend['start'])->format('Y-m-d\TH:i');
+        $dataFrontend['end'] = Carbon::createFromDate($dataFrontend['start'])->addMinutes($service->duration)->format('Y-m-d\TH:i');
+        $dataFrontend['service_id'] = (int) $dataFrontend['service_id'];
+        $dataFrontend['title'] = $service->name . ' - ' . $dataFrontend['name'] . ' - ' . $dataFrontend['phone_number'] . '        Durata: ' . $service->duration . ' minute';
 
-        Event::query()->create($payload);
+        Event::query()->create($dataFrontend);
 
         if ($authId) {
             return redirect('/my-events?event=success');

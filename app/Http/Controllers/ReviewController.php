@@ -20,23 +20,33 @@ class ReviewController extends Controller
 
     public function reviewCreate(Request $request)
     {
-        $payload = $request->input();
+        $dataFrontent = $request->input();
         $userId = Auth::id();
-        $payload['user_id'] = $userId;
+        $dataFrontent['user_id'] = $userId;
 
-        Review::query()->create($payload);
+        Review::query()->create($dataFrontent);
 
         return redirect('/home?event=successReview');
     }
 
-    public function editReview(Request $request)
+    public function editReview(Request $request, $id)
     {
-        $review = Review::find($request->input('id'));
+        $review = Review::find($id);
+        $active = $request->input('active');
+        $activeValue = $active === 'true';
 
-        $review->active  = $request->input('active') === 'true';
+        if ($active) {
+            $review->active = $activeValue;
+        }
+
+        $review->update($request->input());
         $review->save();
 
-        return $review;
+        if ($active) {
+            return $review;
+        }
+
+        return redirect('/reviews');
     }
 
     public function deleteReview(Request $request)

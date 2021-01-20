@@ -99,3 +99,5 @@ var slideshow = {
 
 // FIRE UP SLIDE SHOW ON PAGE LOAD
 window.addEventListener("load", slideshow.start);
+
+// Adaptare dupa https://codepen.io/maheshambure21/pen/qZZrxy

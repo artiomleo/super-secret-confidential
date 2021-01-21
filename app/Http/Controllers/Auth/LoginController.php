@@ -31,10 +31,12 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user): \Illuminate\Http\RedirectResponse
     {
+        // redirectez dupa ce userul sa logat
         if ($user->isAdmin()) {// do your magic here
+            // daca e admin la pagina de programari ale userilor
             return redirect()->route('events');
         }
-
+        // daca nu e admin atunci la pagina de home
         return redirect()->route('home');
     }
 

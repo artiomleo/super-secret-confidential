@@ -42,7 +42,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
+// folosit in navbar.blade linia: 39 si in loginController linia: 34 si in fullcalendarController linia: 22
     public function isAdmin() {
         return $this->role === 'admin';
     }

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Laravel</title>
-
+{{--    css calendar--}}
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
@@ -20,10 +20,12 @@
 
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
-
+    {{--import scriptul--}}
     <script src="/js/scripts/eventCreate.js"></script>
 
     <script>
+        {{--injectez evenimentele de start si end in js, in web.php fac asta cu with()--}}
+        {{--acestea is folosite in eventCreate.js si scriptul e importat in blade mai sus--}}
         const dbEvents = {!! $events !!};
         const dbServices = {!! $services !!};
     </script>
@@ -58,7 +60,10 @@
                         onchange="return onChangeCategory();"
                         required>
                     <option disabled selected value> -- selectați un departament --</option>
+                    {{--fac un forEach pe departamentele din database si creez valori de select in select input--}}
                     @foreach(App\Models\Department::query()->get() as $department)
+                        {{--dau valoarea la select id ca sa o folosesc apoi in js pentru a verifica chestii--}}
+                        {{--si ca continut pun numele departamentului--}}
                         <option value='{{ $department->id }}'>{{ $department->name }}</option>
                     @endforeach
                 </select>
@@ -72,6 +77,7 @@
                         onchange="return onChangeService();"
                         name="service_id"
                         required>
+                    {{--fac aceeasi chestie ca mai sus doar ca pentru selectul de servicii--}}
                     @foreach(App\Models\Service::query()->get() as $service)
                         <option value='{{ $service->id }}'
                                 key='{{ $service->department_id }}'>{{ $service->name }}</option>

@@ -86,11 +86,14 @@
     <input type="radio" name="slider" title="slide3" class="slider__nav"/>
     <input type="radio" name="slider" title="slide4" class="slider__nav"/>
     <div class="slider__inner">
+{{-- afisez reviewurile din database in sliderul de pe homepage --}}
         @foreach(App\Models\Review::query()->where('active', true)->get() as $review)
             <div class="slider__contents">
                 <h2 class="slider__caption">
+{{-- se fac iteratii si se creeaza cate un slider pentru fiecare review --}}
                     {{$review->user->name}}
                     <p style="margin-bottom: 0px; margin-top: 10px;">
+{{-- afisez stelutele facand o logica cu css-ul care il pun in dependinta de ratingul reviewului din iteratia curenta --}}
                         <i class="{{ $review->rating == 1 || $review->rating == 2 || $review->rating == 3 || $review->rating == 4 || $review->rating == 5 ? 'fa' : 'far' }} fa-star"></i>
                         <i class="{{ $review->rating == 2 || $review->rating == 3 || $review->rating == 4 || $review->rating == 5 ? 'fa' : 'far' }} fa-star"></i>
                         <i class="{{ $review->rating == 3 || $review->rating == 4 || $review->rating == 5 ? 'fa' : 'far' }} fa-star"></i>
@@ -99,6 +102,7 @@
                     </p>
                 </h2>
                 <p class="slider__txt">
+{{-- daca descrierea e prea lunga atunci o tai folosind php si afisez doar primele 200 caractere si ... la sfarsit --}}
                     {{ strlen($review->description) > 200 ? strip_tags(substr($review->description, 0, 200)) . " ..." : strip_tags(substr($review->description, 0, 200)) }}
                 </p>
             </div>
@@ -106,10 +110,11 @@
     </div>
 </div>
 
-
+{{-- daca userul e logat atunci afiseaza formul unde poti sa acorzi un rating --}}
 @if(Illuminate\Support\Facades\Auth::check())
     <div class="d-flex flex-row justify-content-center">
         <div class="review-form">
+{{-- se face request la /review-create-submit direct din form si se adauga o recenzie, requestul in gasesti in web.php --}}
             <form action="/review-create-submit" method="POST">
                 @csrf
                 <p class="text-center font-weight-bolder review-form-header">Acordă-ne o recenzie</p>
@@ -137,7 +142,7 @@
         </div>
     </div>
 @endif
-
+{{-- elementul de slider --}}
 <div id="slideshow">
     <div id="slides">
         <img src="/img/fiole.jpg" data-caption="Cele mai bune cosmetice"/>

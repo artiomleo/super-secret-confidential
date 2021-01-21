@@ -14,6 +14,7 @@
           rel="stylesheet">
 </head>
 <body class="antialiased">
+{{-- mesajul care apare dupa ce userul face o programare si este redirectat pe pagina de my-events --}}
 @if(request()->query('event') === 'success')
     <div class="event-notification">
         Te-ai programat cu succes!

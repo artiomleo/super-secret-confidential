@@ -12,7 +12,7 @@ class Review extends Model
         'rating',
         'description'
     ];
-
+    // aceasta o folosesc in home.blade linia: 94 si in reviews.blade linia: 140
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(User::class);

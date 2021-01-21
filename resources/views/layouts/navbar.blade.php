@@ -23,6 +23,7 @@
                     </li>
                 @endif
                 <li class="nav-item">
+                    {{--verific numele url-ului curent si dca coincide pun clasa active pe linkul de home din navbar--}}
                     <a class="nav-link {{ \Route::current()->getName() === 'home' ? 'active' : '' }}"
                        href="/">Home</a>
                 </li>
@@ -34,11 +35,14 @@
                     <a class="nav-link {{ \Route::current()->getName() == 'eventCreate' ? 'active' : '' }}"
                        href="/event-create">Programează-te</a>
                 </li>
+                {{--aici verific daca userul e logat si daca nu e admin--}}
                 @if(Illuminate\Support\Facades\Auth::check() && !Illuminate\Support\Facades\Auth::user()->isAdmin())
                     <li class="nav-item">
+                        {{--afisez programarile mele--}}
                         <a class="nav-link {{ \Route::current()->getName() == 'myEvents' ? 'active' : '' }}"
                            href="/myEvents">Programările mele</a>
                     </li>
+                    {{--daca e logat si e admin afisez programarile si recenziile clientilor--}}
                 @elseif(Illuminate\Support\Facades\Auth::check() && Illuminate\Support\Facades\Auth::user()->isAdmin())
                     <li class="nav-item">
                         <a class="nav-link {{ \Route::current()->getName() === 'events' ? 'active' : '' }} "

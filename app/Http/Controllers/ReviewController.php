@@ -50,7 +50,7 @@ class ReviewController extends Controller
     public function deleteReview(Request $request)
     {
         $review = Review::find($request->input('id'));
-
+        // sterg review
         $review->delete();
     }
 

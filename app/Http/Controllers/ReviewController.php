@@ -23,7 +23,7 @@ class ReviewController extends Controller
         $dataFrontend = $request->input();
         $userId = Auth::id();
         $dataFrontend['user_id'] = $userId;
-
+        // creez un review
         Review::query()->create($dataFrontend);
 
         return redirect('/home?event=successReview');
@@ -33,18 +33,16 @@ class ReviewController extends Controller
     {
         $review = Review::find($id);
         $active = $request->input('active');
+        // transform valoarea active din string in integer
         $activeValue = $active === 'true';
 
         if ($active) {
             $review->active = $activeValue;
         }
-
+        // editez un review
         $review->update($request->input());
+        // salvez
         $review->save();
-
-        if ($active) {
-            return $review;
-        }
 
         return redirect('/reviews');
     }

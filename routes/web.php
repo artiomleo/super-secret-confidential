@@ -57,7 +57,7 @@ Route::post('/reviews/delete', [ReviewController::class, 'deleteReview']); // la
 
 Route::get('/event-create', ['middleware' => 'web', function() {
     return view('event-create')->with([
-        'events' => collect(Event::query()->select('start', 'end')->get())->toJson(), // iarasi injectez in events.blade
+        'events' => collect(Event::query()->select('start', 'end')->get())->toJson(), // iarasi injectez in event-create.blade -> 27
         'services' => collect(Service::query()->select('id', 'duration', 'name')->get())->toJson(),
     ]);
 }])->name('eventCreate');
@@ -65,10 +65,10 @@ Route::get('/event-create', ['middleware' => 'web', function() {
 Route::get('/events', [EventController::class, 'events'])->name('events');
 Route::get('/myEvents', [EventController::class, 'myEvents'])->name('myEvents');
 Route::post('/event-create-submit', ['middleware' =>'web', function(Request $request) {
-    return EventController::eventCreateSubmit($request);
+    return EventController::eventCreateSubmit($request); // aici functie statica pentru ca o apelez din <form> si nu trebuie sa instantiez clasa EventController doar sa execut functia in event-create.blade -> 35
 }]);
 
-Route::get('/logout', [LoginController::class, 'logout']);
+Route::get('/logout', [LoginController::class, 'logout']); // ruta de logout
 
 Route::get('/fullcalendar', [FullCalendarController::class, 'index']);
 Route::post('/fullcalendar/update', [FullCalendarController::class, 'update']);

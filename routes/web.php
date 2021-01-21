@@ -21,13 +21,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// rute autentificare
 Auth::routes();
-
+// ruta cu 'middleware' =>'guest'  pentru ca sa poata accesa cei neiregistrati
 Route::get('/', ['middleware' =>'guest', function() {
     return view('home');
 }]);
-
+// returneaza un view fara controller (paginile care nu interactioneaza cu backend-ul)
 Route::get('/coafor', ['middleware' =>'web', function() {
     return view('coafor');
 }]);
@@ -44,20 +44,20 @@ Route::get('/home', [HomeController::class, 'home'])->name('home');
 
 Route::get('/despreNoi', ['middleware' => 'web', function() {
     return view('about');
-}])->name('despreNoi');
+}])->name('despreNoi'); // acest nume se foloseste in navbar.blade linia 30
 
 Route::get('/reviews', ['middleware' => 'web', function() {
     return view('reviews')->with([
-        'reviews' => App\Models\Review::query()->get(),
+        'reviews' => App\Models\Review::query()->get(), // asa injectez date in blade -> reviews.blade linia 124
     ]);
-}])->name('reviews');
-Route::post('/review-create-submit', [ReviewController::class, 'reviewCreate'])->name('reviewCreate');
-Route::post('/reviews/{id}/edit', [ReviewController::class, 'editReview']);
-Route::post('/reviews/delete', [ReviewController::class, 'deleteReview']);
+}])->name('reviews'); // la fel navbar.blade linia 48
+Route::post('/review-create-submit', [ReviewController::class, 'reviewCreate'])->name('reviewCreate'); // acesta il folosesc pentru a face request in <form> in blade -> home.blade -> 113
+Route::post('/reviews/{id}/edit', [ReviewController::class, 'editReview']); // la fel ca si sus -> reviews.blade -> 133
+Route::post('/reviews/delete', [ReviewController::class, 'deleteReview']); // la fel -> reviews.blade -> 42
 
 Route::get('/event-create', ['middleware' => 'web', function() {
     return view('event-create')->with([
-        'events' => collect(Event::query()->select('start', 'end')->get())->toJson(),
+        'events' => collect(Event::query()->select('start', 'end')->get())->toJson(), // iarasi injectez in events.blade
         'services' => collect(Service::query()->select('id', 'duration', 'name')->get())->toJson(),
     ]);
 }])->name('eventCreate');

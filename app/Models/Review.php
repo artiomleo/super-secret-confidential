@@ -4,17 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Event extends Model
+class Review extends Model
 {
     protected $fillable = [
-      'title',
-      'name',
-      'email',
-      'phone_number',
-      'start',
-      'end',
-      'service_id',
-      'user_id'
+        'email',
+        'user_id',
+        'rating',
+        'description'
     ];
 
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo

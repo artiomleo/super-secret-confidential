@@ -1,6 +1,9 @@
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-<link href="{{ asset('css/mystyle.scss') }}" rel="stylesheet">
+<head>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/mystyle.scss') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Tangerine:bold,bolditalic|Inconsolata:italic|Droid+Sans"
+          rel="stylesheet">
+</head>
 
 <div class="header">
     <div class="top-nav container">
@@ -20,8 +23,12 @@
                     </li>
                 @endif
                 <li class="nav-item">
+                    <a class="nav-link {{ \Route::current()->getName() === 'home' ? 'active' : '' }}"
+                       href="/">Home</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link {{ \Route::current()->getName() === 'despreNoi' ? 'active' : '' }}"
-                       href="/despre-noi">Despre noi</a>
+                       href="/despreNoi">Despre noi</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ \Route::current()->getName() == 'eventCreate' ? 'active' : '' }}"
@@ -30,14 +37,18 @@
                 @if(Illuminate\Support\Facades\Auth::check() && !Illuminate\Support\Facades\Auth::user()->isAdmin())
                     <li class="nav-item">
                         <a class="nav-link {{ \Route::current()->getName() == 'myEvents' ? 'active' : '' }}"
-                           href="/my-events">Programările mele</a>
+                           href="/myEvents">Programările mele</a>
+                    </li>
+                @elseif(Illuminate\Support\Facades\Auth::check() && Illuminate\Support\Facades\Auth::user()->isAdmin())
+                    <li class="nav-item">
+                        <a class="nav-link {{ \Route::current()->getName() === 'events' ? 'active' : '' }} "
+                           href="/events">Programările clienților</a>
                     </li>
                     <li class="nav-item">
-                        @elseif(Illuminate\Support\Facades\Auth::check() && Illuminate\Support\Facades\Auth::user()->isAdmin())
-                            <a class="nav-link {{ \Route::current()->getName() === 'events' ? 'active' : '' }} "
-                               href="/events">Programările clientilor</a>
-                        @endif
+                        <a class="nav-link {{ \Route::current()->getName() === 'reviews' ? 'active' : '' }} "
+                           href="/reviews">Recenziile clienților</a>
                     </li>
+                @endif
             </ul>
         </nav>
         <div class="logo">
@@ -45,7 +56,7 @@
         </div>
         <div class="hero container">
             <div class="hero copy header-salon">
-                <h1 style="font-size:300%; color:#FFF5EE;">Salon Vasilica</h1>
+                <h1 class="header-title">Salon Vasilica</h1>
             </div>
         </div>
     </div>

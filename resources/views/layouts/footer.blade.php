@@ -1,7 +1,3 @@
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-<link href="{{ asset('css/mystyle.scss') }}" rel="stylesheet">
-
 <div class="footer">
     <div class="made-with">Realizat cu 💛&nbsp de Cătuna Denisa-Maria</div>
     <div class="icons follow-us">

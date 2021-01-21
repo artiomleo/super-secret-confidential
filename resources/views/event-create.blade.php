@@ -8,43 +8,25 @@
 
     <title>Laravel</title>
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Tangerine:bold,bolditalic|Inconsolata:italic|Droid+Sans"
-          rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css"
+        rel="stylesheet">
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
+    <script src="/js/scripts/eventCreate.js"></script>
 
     <script>
-        function showcategory() {
-            var departmentSelect = document.getElementById('department');
-            filter(departmentSelect.value)
-        }
-
-        function filter(departmentId) {
-            var select = document.getElementById("service");
-            var form = document.getElementById("formgroup");
-            let selected = false;
-            for (var i = 0; i < select.length; i++) {
-                var txt = select.options[i].attributes.key.value;
-                if (!txt.match(departmentId)) {
-                    $(select.options[i]).attr('disabled', 'disabled').hide();
-                } else {
-                    if (!selected) {
-                        $('#service').val(select.options[i].attributes.value.value);
-                        selected = true;
-                    }
-                    $(select.options[i]).removeAttr('disabled').show();
-                }
-            }
-            form.classList.remove('hidden')
-        }
+        const dbEvents = {!! $events !!};
+        const dbServices = {!! $services !!};
     </script>
-
-    <style>
-        body {
-            font-family: 'Nunito';
-        }
-    </style>
 </head>
 
 <body class="antialiased">
@@ -53,56 +35,68 @@
         <form class="py-5 my-5 w-50 inputs-card" action="/event-create-submit" method="POST">
             @csrf
             <div class="form-group">
-                <label for="exampleInputEmail1">Nume</label>
+                <label for="exampleInputEmail1">Nume:</label>
                 <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                        placeholder="Nume" name="name" required>
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Email</label>
-                <input type="email" class="form-control" id="exampleInputPassword1" placeholder="Email" name="email" required>
+                <label for="exampleInputPassword1">Email:</label>
+                <input type="email" class="form-control" id="exampleInputPassword1" placeholder="Email" name="email"
+                       required>
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Numar de telefon</label>
-                <input type="text" class="form-control" id="exampleInputPassword1" name="phone_number" placeholder="Numar de telefon" required>
+                <label for="exampleInputPassword1">Număr de telefon:</label>
+                <input type="text" class="form-control" id="exampleInputPassword1" name="phone_number"
+                       placeholder="Numar de telefon" required>
             </div>
 
             <div class="form-group">
                 <label for="Title">Departament:</label>
                 <select class="custom-select custom-select-sm"
                         id="department"
-                        style="height: 38px; font-size: 0.9rem; padding: 0.375rem 0.75rem;"
-                        onchange="return showcategory();"
+                        style="height: 38px; font-size: 1.3rem; padding: 0.375rem 0.9rem;"
+                        onchange="return onChangeCategory();"
                         required>
-                    <option disabled selected value> -- selectați o opțiune -- </option>
-                @foreach(App\Models\Department::query()->get() as $department)
-                        <option  value='{{ $department->id }}'>{{ $department->name }}</option>
-                @endforeach
-                </select>
-            </div>
-
-            <div class="form-group hidden" id="formgroup">
-                <label for="Title">Serviciu:</label>
-                <select class="custom-select custom-select-sm"
-                        style="height: 38px; font-size: 0.9rem; padding: 0.375rem 0.75rem;"
-                        id="service"
-                        name="service_id"
-                        required>
-                    @foreach(App\Models\Service::query()->get() as $service)
-                        <option value='{{ $service->id }}' key='{{ $service->department_id }}'>{{ $service->name }}</option>
+                    <option disabled selected value> -- selectați un departament --</option>
+                    @foreach(App\Models\Department::query()->get() as $department)
+                        <option value='{{ $department->id }}'>{{ $department->name }}</option>
                     @endforeach
                 </select>
             </div>
 
-            <div class="form-group">
-                <strong> Data și ora : </strong>
-                <input class="date form-control" type="datetime-local" id="starttime" name="start_time" required>
+            <div class="form-group hidden" id="service-wrapper">
+                <label for="Title">Serviciu:</label>
+                <select class="custom-select custom-select-sm"
+                        style="height: 38px; font-size: 1.3rem; padding: 0.375rem 0.9rem;"
+                        id="service"
+                        onchange="return onChangeService();"
+                        name="service_id"
+                        required>
+                    @foreach(App\Models\Service::query()->get() as $service)
+                        <option value='{{ $service->id }}'
+                                key='{{ $service->department_id }}'>{{ $service->name }}</option>
+                    @endforeach
+                </select>
             </div>
-            <button type="submit" class="btn btn-primary" id="submitbutton" onclick="document.getElementById('submitbutton').disabled = true;">
-                Submit
+
+            <div class="form-group hidden" id="calendar-group">
+                <strong> Data: </strong>
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" id="datetimepicker1_input" name="start" required/>
+                    <span class="input-group-addon">
+                   <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="date-error__wrapper hidden" id="date-error__wrapper">
+                <p id="dateErrorMessage" class="hidden">Această dată este ocupată</p>
+            </div>
+            <button type="submit" class="btn btn-primary" id="submitbutton">
+                Trimite programarea!
             </button>
         </form>
     </div>
 </div>
-<?php echo View::make('layouts.footer') ?>
+@include('layouts.footer')
 </body>
 </html>

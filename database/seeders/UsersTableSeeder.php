@@ -22,14 +22,21 @@ class UsersTableSeeder extends Seeder
         ]);
 
         User::query()->create([
-            'name' => 'Client',
+            'name' => 'Andrei Bolocan',
             'email' => 'client@mail.com',
             'password' => Hash::make('secret'),
             'email_verified_at' => now(),
         ]);
 
         User::query()->create([
-            'name' => 'Vasile',
+            'name' => 'Viorica Galben',
+            'email' => 'viorica@mail.com',
+            'password' => Hash::make('secret'),
+            'email_verified_at' => now(),
+        ]);
+
+        User::query()->create([
+            'name' => 'Vasile Petrescu',
             'email' => 'vasile@mail.com',
             'password' => Hash::make('secret'),
             'email_verified_at' => now(),

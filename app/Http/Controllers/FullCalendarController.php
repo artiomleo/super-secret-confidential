@@ -18,7 +18,7 @@ class FullCalendarController extends Controller
             // formatez data de start si end comoda pentru calendar
             $start = (!empty($_GET["start"])) ? ($_GET["start"]) : ('');
             $end = (!empty($_GET["end"])) ? ($_GET["end"]) : ('');
-            // daca e admin dau programarile tuturor userilor
+            // daca e admin dau programarile tuturor userilor -> User.php linia 46
             if (!$user->isAdmin()) {
                 $data = $this->getUserEvents($user, $start, $end);
             // daca nu e admin dau programarile userului logat

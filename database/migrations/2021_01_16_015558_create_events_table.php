@@ -21,7 +21,9 @@ class CreateEventsTable extends Migration
             $table->string('phone_number');
             $table->timestamp('start')->unique()->nullable();
             $table->timestamp('end')->nullable();
+            // foreignID cu numele  service_id legat prin constrained() la tabela services
             $table->foreignId('service_id')->constrained('services');
+            // foreignID cu numele  user_id legat prin constrained() la tabela users
             $table->foreignId('user_id')->nullable()->constrained('users');
             $table->timestamps();
         });

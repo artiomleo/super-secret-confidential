@@ -17,6 +17,7 @@ class CreateServicesTable extends Migration
             $table->id();
             $table->string('name');
             $table->integer('duration');
+            // foreignID cu numele  department_id legat prin constrained() la tabela departments
             $table->foreignId('department_id')->constrained('departments');
             $table->timestamps();
         });

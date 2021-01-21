@@ -31,7 +31,7 @@
 </body>
 <script>
     $(document).ready(function () {
-        const userIsAdmin = {!! Illuminate\Support\Facades\Auth::user()->isAdmin() !!}
+        const userIsAdmin = {!! json_encode(auth()->user()->isAdmin()) !!};
 
         $.ajaxSetup({
             headers: {
@@ -47,7 +47,7 @@
             },
             events: "/fullcalendar",
             displayEventTime: true,
-            editable: true,
+            editable: userIsAdmin,
             eventRender: function (event, element, view) {
                 if (event.allDay === 'true') {
                     event.allDay = true;
@@ -59,11 +59,6 @@
             selectHelper: true,
 
             eventDrop: function (event, delta) {
-                if (!userIsAdmin) {
-                    return
-                }
-
-                console.log(userIsAdmin)
                 const start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
                 const end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
 

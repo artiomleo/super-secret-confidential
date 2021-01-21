@@ -1,6 +1,8 @@
 <head>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/mystyle.scss') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Tangerine:bold,bolditalic|Inconsolata:italic|Droid+Sans"
+          rel="stylesheet">
 </head>
 
 <div class="header">
@@ -54,7 +56,7 @@
         </div>
         <div class="hero container">
             <div class="hero copy header-salon">
-                <h1 style="font-size:70px !important; font-family: 'Tangerine', cursive, sans-serif; color:#FFF5EE;">Salon Vasilica</h1>
+                <h1 class="header-title">Salon Vasilica</h1>
             </div>
         </div>
     </div>

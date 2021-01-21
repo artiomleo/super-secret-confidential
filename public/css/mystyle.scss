@@ -52,6 +52,7 @@
         -ms-flex-pack: justify;
         justify-content: space-between;
         padding: .5rem 1rem;
+        margin-bottom: 0 !important;
     }
 }
 
@@ -62,9 +63,15 @@
     }
 }
 
-.header-salon {
-    font-family: "Tangerine", cursive, sans-serif;
-    font-weight: 500;
+.header-salon h1 {
+    font-family: "Tangerine", cursive, sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 50px !important;
+    margin-top: 20px;
+}
+
+.hero.container {
+    width: 100% !important;
 }
 
 .navbar-nav {

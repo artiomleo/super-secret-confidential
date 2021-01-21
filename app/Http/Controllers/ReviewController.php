@@ -42,10 +42,6 @@ class ReviewController extends Controller
         $review->update($request->input());
         $review->save();
 
-        if ($active) {
-            return $review;
-        }
-
         return redirect('/reviews');
     }
 

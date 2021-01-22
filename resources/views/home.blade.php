@@ -62,7 +62,7 @@
                 <a href="manichiura">
                     <img width="60px" src="/img/manipediicon.png"/>
                 </a>
-                <p class="icon-text">Manichiura / perichiura</p>
+                <p class="icon-text">Manichiura-Pedichiura</p>
             </div>
         </div>
     </div>
@@ -151,6 +151,6 @@
     <div id="slide-caption"></div>
 </div>
 
-<?php echo View::make('layouts.footer') ?>
+@include('layouts.footer')
 </body>
 </html>

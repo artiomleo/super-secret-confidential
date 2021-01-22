@@ -62,7 +62,7 @@
                 <a href="manichiura">
                     <img width="60px" src="/img/manipediicon.png"/>
                 </a>
-                <p class="icon-text">Manichiura / perichiura</p>
+                <p class="icon-text">Manichiura-Pedichiura</p>
             </div>
         </div>
     </div>

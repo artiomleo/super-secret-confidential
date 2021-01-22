@@ -13,7 +13,7 @@ class EventController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('web');
     }
 
     public function myEvents()
@@ -31,7 +31,7 @@ class EventController extends Controller
         return view('event-create');
     }
 
-    public static function eventCreateSubmit(Request $request)
+    public function eventCreateSubmit(Request $request)
     {
         $dataFrontend = $request->input();
         $service = Service::query()->where('id', $dataFrontend['service_id'])->first();

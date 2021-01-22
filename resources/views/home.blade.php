@@ -151,6 +151,6 @@
     <div id="slide-caption"></div>
 </div>
 
-<?php echo View::make('layouts.footer') ?>
+@include('layouts.footer')
 </body>
 </html>

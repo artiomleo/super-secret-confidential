@@ -64,9 +64,7 @@ Route::get('/event-create', ['middleware' => 'web', function() {
 
 Route::get('/events', [EventController::class, 'events'])->name('events');
 Route::get('/myEvents', [EventController::class, 'myEvents'])->name('myEvents');
-Route::post('/event-create-submit', ['middleware' =>'web', function(Request $request) {
-    return EventController::eventCreateSubmit($request);
-}]);
+Route::post('/event-create-submit', [EventController::class, 'eventCreateSubmit'])->name('eventCreateSubmit');
 
 Route::get('/logout', [LoginController::class, 'logout']);
 

@@ -14,7 +14,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>Salon Vasilica</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -30,9 +30,9 @@
             <h2 class="featurette-heading"></h2>
             <p class="lead">Lasă-ne pe noi să avem grijă de părul tău!</p>
             <ul>
-                <li>Coffee</li>
-                <li>Tea</li>
-                <li>Coca Cola</li>
+                <li>Tuns</li>
+                <li>Aranjat</li>
+                <li>Vopsit</li>
             </ul>
         </div>
         <div class="col-md-5">

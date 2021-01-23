@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>Salon Vasilica</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -69,13 +69,13 @@
 
     <div class="flex-container">
         <div class="flex-item">
-            <a href="coafor"><img src="/img/Coafor.jpg" alt="Coafor" style="width:100%"></a>
+            <a href="coafor"><img src="/img/Coafor2.jpg" alt="Coafor" style="width:100%"></a>
         </div>
         <div class="flex-item">
             <a href="cosmetica"><img src="/img/facial_treatment.jpg" alt="Cosmetica" style="width:100%"></a>
         </div>
         <div class="flex-item">
-            <a href="manichiura"><img src="/img/manichiurafrench.jpg" alt="Manichiura" style="width:100%"></a>
+            <a href="manichiura"><img src="/img/manipediii.jpg" alt="Manichiura" style="width:100%"></a>
         </div>
     </div>
 </div>
@@ -140,10 +140,10 @@
 
 <div id="slideshow">
     <div id="slides">
-        <img src="/img/fiole.jpg" data-caption="Cele mai bune cosmetice"/>
-        <img src="/img/londaprod.jpg" data-caption="Produse profesionale de stilizare"/>
-        <img src="/img/prodLonda.jpg" data-caption="Produse pentru toate tipurile de păr"/>
-        <img src="/img/perii.jpg" data-caption="Cele mai bune ustensile"/>
+        <img src="/img/Manichiurafrench.jpg" data-caption="Cele mai bune cosmetice"/>
+        <img src="/img/home.jpg" data-caption="Produse profesionale de stilizare"/>
+        <img src="/img/slide3.jpg" data-caption="Produse pentru toate tipurile de păr"/>
+        <img src="/img/1salon.jpg" data-caption="Cele mai bune ustensile"/>
     </div>
 
     <div id="slide-left">&lt;</div>
@@ -151,6 +151,6 @@
     <div id="slide-caption"></div>
 </div>
 
-@include('layouts.footer')
+<?php echo View::make('layouts.footer') ?>
 </body>
 </html>

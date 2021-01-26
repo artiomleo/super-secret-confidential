@@ -19,6 +19,41 @@
 
     <script src="/js/scripts/slideshow.js"></script>
 
+    <script>
+        function onSubmitReviewClick() {
+            const descriptionError = document.getElementById("descriptionErrorMessage");
+            const ratingError = document.getElementById("ratingErrorMessage");
+            let descriptionValue = false
+            let ratingValue = false
+            const formData = new FormData(document.querySelector('#submit-form'))
+
+            for (var pair of formData.entries()) {
+                if (pair[0] === 'rating') {
+                    ratingValue = true
+                }
+
+                if (pair[0] === 'description' && pair[1]) {
+                    descriptionValue = true
+                }
+            }
+
+            if (ratingValue === true && descriptionValue === true) {
+                document.getElementById("review-form").submit();
+            } else {
+                if (!descriptionValue) {
+                    descriptionError.classList.remove('hidden');
+                } else {
+                    descriptionError.classList.add('hidden');
+                }
+                if (!ratingValue) {
+                    ratingError.classList.remove('hidden');
+                } else {
+                    ratingError.classList.add('hidden');
+                }
+            }
+        }
+    </script>
+
     <style>
         #slideshow, #slides img {
             max-width: 100%;
@@ -26,6 +61,19 @@
 
         #slide-caption {
             display: none;
+        }
+
+        #date-error__wrapper {
+            margin-top: 15px;
+        }
+
+        #descriptionErrorMessage {
+            font-size: 18px;
+            color: #f73131;
+        }
+        #ratingErrorMessage {
+            font-size: 18px;
+            color: #f73131;
         }
     </style>
 </head>
@@ -110,7 +158,7 @@
 @if(Illuminate\Support\Facades\Auth::check())
     <div class="d-flex flex-row justify-content-center">
         <div class="review-form">
-            <form action="/review-create-submit" method="POST">
+            <form action="/review-create-submit" method="POST" id="submit-form">
                 @csrf
                 <p class="text-center font-weight-bolder review-form-header">Acordă-ne o recenzie</p>
                 <div class="form-group">
@@ -127,12 +175,18 @@
                         <input type="radio" name="rating" value="1" id="rating-1">
                         <label for="rating-1"></label>
                     </div>
+                    <div class="date-error__wrapper" id="date-error__wrapper">
+                        <p id="ratingErrorMessage" class="hidden">Adauga te rog o un rating</p>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Descriere</label>
                     <textarea class="form-control" name="description" id="description1" rows="3"></textarea>
+                    <div class="date-error__wrapper" id="date-error__wrapper">
+                        <p id="descriptionErrorMessage" class="hidden">Adauga te rog o descriere</p>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Trimite recenzia</button>
+                <button type="submit" id="review-form" class="btn btn-primary" onclick="onSubmitReviewClick(); return false;">Trimite recenzia</button>
             </form>
         </div>
     </div>

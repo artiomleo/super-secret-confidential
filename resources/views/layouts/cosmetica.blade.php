@@ -25,6 +25,6 @@
 
 
 
-<?php echo View::make('layouts.footer') ?>
+@include('layouts.footer')
 </body>
 </html>

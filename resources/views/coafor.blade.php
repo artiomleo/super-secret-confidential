@@ -29,11 +29,56 @@
         <div class="col-md-7 d-flex flex-column justify-content-center">
             <h2 class="featurette-heading"></h2>
             <p class="lead">Lasă-ne pe noi să avem grijă de părul tău!</p>
-            <ul>
-                <li>Tuns</li>
-                <li>Aranjat</li>
-                <li>Vopsit</li>
-            </ul>
+            <table id="customers">
+                <tr>
+                    <th>Serviciu</th>
+                    <th>Pret</th>
+                </tr>
+                <tr>
+                    <td>Tuns păr scurt</td>
+                    <td>30 de lei</td>
+                </tr>
+                <tr>
+                    <td>Tuns păr mediu</td>
+                    <td>45 de lei</td>
+                </tr>
+                <tr>
+                    <td>Tuns păr lung</td>
+                    <td>50 de lei</td>
+                </tr>
+                <tr>
+                    <td>Aranjat de zi</td>
+                    <td>60 de lei</td>
+                </tr>
+                <tr>
+                    <td>Aranjat de gală</td>
+                    <td>100 de lei</td>
+                </tr>
+                <td>Aranjat de mireasă</td>
+                    <td>250 de lei</td>
+                </tr>
+                <td>Spălat</td>
+                    <td>25 de lei</td>
+                </tr>
+                <td>Tratament de hidratare</td>
+                    <td>50 de lei</td>
+                </tr>
+                <td>Tratament de regenerare</td>
+                    <td>50 de lei</td>
+                </tr>
+                <td>Tratament de anticădere</td>
+                    <td>50 de lei</td>
+                </tr>
+                <td>Vopsit păr scurt</td>
+                    <td>80 de lei</td>
+                </tr>
+                <td>Vopsit păr mediu</td>
+                    <td>100 de lei</td>
+                </tr>
+                <td>Vopsit păr lung</td>
+                    <td>150 de lei</td>
+                </tr>
+            </table>
         </div>
         <div class="col-md-5">
             <img class="featurette-image mx-auto" alt="500x500" style="width: 600px; height: auto;" src="/img/coaforr.png">
@@ -43,6 +88,6 @@
 
 
 
-<?php echo View::make('layouts.footer') ?>
+@include('layouts.footer')
 </body>
 </html>

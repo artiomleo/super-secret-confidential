@@ -74,7 +74,7 @@
                     data: data,
                     type: "POST",
                     success: function (response) {
-                        displayMessage("Updated Successfully");
+                        displayMessage("Programare modificată cu succes!");
                     }
                 });
             },
@@ -84,7 +84,7 @@
                     return
                 }
 
-                const deleteMsg = confirm("Do you really want to delete?");
+                const deleteMsg = confirm("Chiar îți dorești să ștergi programarea?");
 
                 const objToEmit = {
                     id: event.id
@@ -98,7 +98,7 @@
                         success: function (response) {
                             if (parseInt(response) > 0) {
                                 $('#calendar').fullCalendar('removeEvents', event.id);
-                                displayMessage("Deleted Successfully");
+                                displayMessage("Programare ștearsă cu succes!");
                             }
                         }
                     });

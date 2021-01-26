@@ -48,13 +48,13 @@
         <div class="row">
             <div class="col-sm d-flex flex-column align-items-center justify-content-center">
                 <a href="coafor">
-                    <img width="60px" src="/img/cosmeticaicon.png"/>
+                    <img width="60px" src="/img/iconfoarfeca.png"/>
                 </a>
                 <p class="icon-text">Coafor</p>
             </div>
             <div class="col-sm d-flex flex-column align-items-center justify-content-center">
                 <a href="cosmetica">
-                    <img width="60px" src="/img/manipediicon.png"/>
+                    <img width="60px" src="/img/cosmeticaicon.png"/>
                 </a>
                 <p class="icon-text">Cosmetica</p>
             </div>
@@ -151,6 +151,6 @@
     <div id="slide-caption"></div>
 </div>
 
-<?php echo View::make('layouts.footer') ?>
+@include('layouts.footer')
 </body>
 </html>

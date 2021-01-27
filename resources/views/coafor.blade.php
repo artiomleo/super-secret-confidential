@@ -81,7 +81,7 @@
             </table>
         </div>
         <div class="col-md-5">
-            <img class="featurette-image mx-auto" alt="500x500" style="width: 600px; height: auto;" src="/img/coaforr.png">
+            <img class="featurette-image mx-auto" alt="500x500" style="width: 1000px; height: auto;" src="/img/coaforr.png">
         </div>
     </div>
 </div>

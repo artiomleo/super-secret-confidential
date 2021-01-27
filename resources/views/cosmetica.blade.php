@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Salon Vasilica</title>
+    <title>Cosmetica</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -46,7 +46,7 @@
             </table>
         </div>
         <div class="col-md-5">
-            <img class="featurette-image img-fluid mx-auto" alt="500x500" style="width: 600px; height: auto;" src="/img/makeup.png">
+            <img class="featurette-image img-fluid mx-auto" alt="500x500" style="width: 1000px; height: auto;" src="/img/makeup.png">
         </div>
     </div>
 </div>

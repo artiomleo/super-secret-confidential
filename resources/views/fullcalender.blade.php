@@ -58,7 +58,7 @@
             selectable: true,
             selectHelper: true,
 
-            eventDrop: function (event, delta, revertFunc) {
+            eventDrop: function (event, delta) {
                 const start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
                 const end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
 
@@ -75,10 +75,6 @@
                     type: "POST",
                     success: function (response) {
                         displayMessage("Programare modificată cu succes!");
-                    },
-                    error: function (err) {
-                        displayMessage("Programarea se suprapune cu alta!");
-                        revertFunc()
                     },
                 });
             },

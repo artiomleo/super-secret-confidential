@@ -76,8 +76,6 @@
                     success: function (response) {
                         displayMessage("Programare modificată cu succes!");
                     },
-                    errorCaptured(err, vm, info) {
-                    },
                     error: function (err) {
                         displayMessage("Programarea se suprapune cu alta!");
                         revertFunc()

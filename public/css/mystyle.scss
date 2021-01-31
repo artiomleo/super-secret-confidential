@@ -5,7 +5,8 @@
 
 @media screen and (min-width: 1200px) {
     .container {
-        max-width: 1140px;
+        max-width: 1240px !important;
+        width: 1240px !important;
     }
 }
 
@@ -35,6 +36,10 @@
     margin-left: auto;
 }
 
+.navbar {
+    padding: 0 !important;
+}
+
 @media screen and (min-width: 576px) {
     .navbar-expand-sm {
         flex-flow: row nowrap;
@@ -51,7 +56,6 @@
         align-items: center;
         -ms-flex-pack: justify;
         justify-content: space-between;
-        padding: .5rem 1rem;
         margin-bottom: 0 !important;
     }
 }
@@ -203,7 +207,7 @@ header {
 }
 
 .header {
-    padding: 60px;
+    padding: 50px;
     text-align: center;
     background: linear-gradient(rgba(190, 161, 161, 0.4), rgba(190, 161, 161, 0.4)), url('/img/formular.jpg');
     background-size: cover;
@@ -463,6 +467,17 @@ body {
 #rating-3:checked ~ .emoji-wrapper > .emoji { transform: translateY(-300px); }
 #rating-4:checked ~ .emoji-wrapper > .emoji { transform: translateY(-400px); }
 #rating-5:checked ~ .emoji-wrapper > .emoji { transform: translateY(-500px); }
+
+.featurette-image {
+    width: inherit;
+}
+
+@media screen and (min-width: 1200px) {
+    .featurette-image {
+        width: 1000px;
+        height: auto;
+    }
+}
 
 .feedback {
     max-width: 360px;

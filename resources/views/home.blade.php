@@ -86,7 +86,7 @@
 
 @if(request()->query('event') === 'successReview')
     <div class="event-notification">
-        Review-ul tau a fost inregistrat!
+        Recenzia ta a fost înregistrată!
     </div>
 @endif
 
@@ -176,14 +176,14 @@
                         <label for="rating-1"></label>
                     </div>
                     <div class="date-error__wrapper" id="date-error__wrapper">
-                        <p id="ratingErrorMessage" class="hidden">Adauga te rog o un rating</p>
+                        <p id="ratingErrorMessage" class="hidden">Acordă-ne te rog o notă</p>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Descriere</label>
                     <textarea class="form-control" name="description" id="description1" rows="3"></textarea>
                     <div class="date-error__wrapper" id="date-error__wrapper">
-                        <p id="descriptionErrorMessage" class="hidden">Adauga te rog o descriere</p>
+                        <p id="descriptionErrorMessage" class="hidden">Acordă-ne te rog o recenzie</p>
                     </div>
                 </div>
                 <button type="submit" id="review-form" class="btn btn-primary" onclick="onSubmitReviewClick(); return false;">Trimite recenzia</button>

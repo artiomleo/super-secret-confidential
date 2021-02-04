@@ -20,7 +20,7 @@
     <div class="row featurette">
         <div class="col-md-7 d-flex flex-column justify-content-center">
             <h2 class="featurette-heading"></h2>
-            <p class="lead">Un machiaj armonios pune în evidență trăsăturile, nu le schimbă!Așadar, pentru un machiaj care să valorifice trăsăturile dumneavoastră, vă recomandăm și un tratament de hidratare sau antiîmbătrânire, pentru a pregăti tenul.</p>
+            <p class="lead">Un machiaj care să valorifice trăsăturile dumneavoastră, necesită și un tratament de hidratare sau antiîmbătrânire în prealabil, pentru a pregăti tenul.</p>
         
             <table id="customers">
                 <tr>

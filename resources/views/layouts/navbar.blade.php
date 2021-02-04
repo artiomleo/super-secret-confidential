@@ -55,7 +55,7 @@
             </ul>
         </nav>
         <div class="logo">
-            <div class="logo"><img style="width: 150px; height: 150px;" src="img/logo.png"></div>
+            <div class="logo"><img style="width: 250px; height: 150px;" src="img/iconnou.png"></div>
         </div>
         <div class="hero container">
             <div class="hero copy header-salon">

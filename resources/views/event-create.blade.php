@@ -92,7 +92,7 @@
             <div class="date-error__wrapper hidden" id="date-error__wrapper">
                 <p id="dateErrorMessage" class="hidden">Această dată este ocupată</p>
             </div>
-            <button type="submit" class="btn btn-primary" id="submitbutton">
+            <button type="submit" onclick="document.getElementById('submitbutton').disabled = true;" class="btn btn-primary" id="submitbutton">
                 Trimite programarea!
             </button>
         </form>

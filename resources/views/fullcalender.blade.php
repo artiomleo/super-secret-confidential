@@ -58,7 +58,7 @@
             selectable: true,
             selectHelper: true,
 
-            eventDrop: function (event, delta) {
+            eventDrop: function (event, delta, revertFunc) {
                 const start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
                 const end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
 
@@ -74,8 +74,12 @@
                     data: data,
                     type: "POST",
                     success: function (response) {
-                        displayMessage("Updated Successfully");
-                    }
+                        displayMessage("Programare modificată cu succes!");
+                    },
+                    error: function (err) {
+                        revertFunc()
+                        displayMessage("Programarea se suprapune cu alta!");
+                    },
                 });
             },
 
@@ -84,7 +88,7 @@
                     return
                 }
 
-                const deleteMsg = confirm("Do you really want to delete?");
+                const deleteMsg = confirm("Chiar îți dorești să ștergi programarea?");
 
                 const objToEmit = {
                     id: event.id
@@ -98,7 +102,7 @@
                         success: function (response) {
                             if (parseInt(response) > 0) {
                                 $('#calendar').fullCalendar('removeEvents', event.id);
-                                displayMessage("Deleted Successfully");
+                                displayMessage("Programare ștearsă cu succes!");
                             }
                         }
                     });

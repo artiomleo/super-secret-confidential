@@ -18,6 +18,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <style>
+        .nav-item .nav-link {
+            color: rgba(0, 0, 0, 0.9) !important;
+        }
+    </style>
 </head>
 <body>
     <div id="app">

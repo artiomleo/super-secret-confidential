@@ -10,6 +10,9 @@
 
         <nav class="navbar navbar-expand-sm bg-pink">
             <ul class="navbar-nav">
+                <li class="nav-item {{ Illuminate\Support\Facades\Auth::user() ? '' : 'hidden' }}">
+                    <a class="nav-link">{{ Illuminate\Support\Facades\Auth::user() ? Illuminate\Support\Facades\Auth::user()->name : '' }}</a>
+                </li>
                 <li class="nav-item">
                     @if(Illuminate\Support\Facades\Auth::check())
                         <a class="nav-link" href="logout">Log out</a>

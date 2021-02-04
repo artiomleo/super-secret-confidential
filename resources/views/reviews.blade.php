@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>Recenzii</title>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
@@ -35,7 +35,7 @@
         });
 
         function onDeleteClick(id) {
-            const deleteMsg = confirm("Do you really want to delete?");
+            const deleteMsg = confirm("Chiar vrei să ștergi recenzia?");
 
             if (deleteMsg) {
                 $.ajax({
@@ -45,7 +45,7 @@
                     },
                     type: "POST",
                     success: function (response) {
-                        displayMessage("Deleted Successfully");
+                        displayMessage("Recenzie ștearsă cu succes!");
                     }
                 });
 
@@ -74,7 +74,7 @@
                 },
                 type: "POST",
                 success: function (response) {
-                    displayMessage("This review was added to homepage");
+                    displayMessage("Recenzia aceasta a fost adăugată pe pagina de Home!");
                 }
             });
 
@@ -90,7 +90,7 @@
                 },
                 type: "POST",
                 success: function (response) {
-                    displayMessage("This review was added to homepage");
+                    displayMessage("Recenzia aceasta a fost adăgată pe pagina de Home!");
                 }
             });
 
@@ -134,7 +134,7 @@
                                             @csrf
                                             <textarea class="form-control form-control-review" rows="10" name="description" id="description-textarea-{{$review->id}}" aria-label="With textarea"></textarea>
 
-                                            <button class="btn btn-success btn-sm" type="submit">Save</button>
+                                            <button class="btn btn-success btn-sm" type="submit">Salvează</button>
                                         </form>
                                     </td>
                                     <td>
@@ -145,11 +145,11 @@
                                         <i class="{{ $review->rating == 5 ? 'fa' : 'far' }} fa-star"></i>
                                     </td>
                                     <td>
-                                        <button class="btn btn-primary btn-sm" id="edit-button-{{$review->id}}" type="button" onclick="onEditClick({{$review}})">Edit</button>
-                                        <button class="btn btn-danger btn-sm" type="button" onclick="onDeleteClick({{$review->id}})">Delete</button>
+                                        <button class="btn btn-primary btn-sm" id="edit-button-{{$review->id}}" type="button" onclick="onEditClick({{$review}})">Editează</button>
+                                        <button class="btn btn-danger btn-sm" type="button" onclick="onDeleteClick({{$review->id}})">Șterge</button>
                                         <br />
-                                        <button class="btn btn-success btn-sm mt-2 {{ $review->active ? 'hidden' : '' }}" onclick="onShowClick({{$review->id}})" type="button">Show</button>
-                                        <button class="btn btn-secondary btn-sm mt-2 {{ !$review->active ? 'hidden' : '' }}" onclick="onHideClick({{$review->id}})" type="button">Hide</button>
+                                        <button class="btn btn-success btn-sm mt-2 {{ $review->active ? 'hidden' : '' }}" onclick="onShowClick({{$review->id}})" type="button">Arată</button>
+                                        <button class="btn btn-secondary btn-sm mt-2 {{ !$review->active ? 'hidden' : '' }}" onclick="onHideClick({{$review->id}})" type="button">Ascunde</button>
                                     </td>
                                 </tr>
                             @endforeach

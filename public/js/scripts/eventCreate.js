@@ -17,7 +17,7 @@ $(document).ready(function () {
 });
 
 function doWork() {
-    setTimeout('$("#submitbutton").removeAttr("disabled")', 500);
+    setTimeout('$("#submitbutton").removeAttr("disabled")', 1000);
     var name = document.getElementById("inputName");
     var email = document.getElementById("inputEmail");
     var phone = document.getElementById("inputPhone");

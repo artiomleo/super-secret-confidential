@@ -472,6 +472,10 @@ body {
     width: inherit;
 }
 
+.errorMessage {
+    color: red;
+}
+
 @media screen and (min-width: 1200px) {
     .featurette-image {
         width: 1000px;

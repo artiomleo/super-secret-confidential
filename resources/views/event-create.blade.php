@@ -33,22 +33,25 @@
 <body class="antialiased">
 <div class="d-flex justify-content-center my-5 form-wrapper">
     <div class="inputs-wrapper w-75 d-flex justify-content-center">
-        <form class="py-5 my-5 w-50 inputs-card" action="/event-create-submit" method="POST">
+        <form class="py-5 my-5 w-50 inputs-card" action="/event-create-submit" method="POST" id="form">
             @csrf
             <div class="form-group">
                 <label for="exampleInputEmail1">Nume:</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                <input type="text" class="form-control" id="inputName" aria-describedby="emailHelp"
                        placeholder="Nume" name="name" required>
+                <p id="nameError" class="errorMessage"></p>
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Email:</label>
-                <input type="email" class="form-control" id="exampleInputPassword1" placeholder="Email" name="email"
+                <input type="email" class="form-control" id="inputEmail" placeholder="Email" name="email"
                        required>
+                <p id="emailError" class="errorMessage"></p>
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Număr de telefon:</label>
-                <input type="text" class="form-control" id="exampleInputPassword1" name="phone_number"
+                <input type="text" class="form-control" id="inputPhone" name="phone_number"
                        placeholder="Numar de telefon" required>
+                <p id="phoneError" class="errorMessage"></p>
             </div>
 
             <div class="form-group">
@@ -63,6 +66,7 @@
                         <option value='{{ $department->id }}'>{{ $department->name }}</option>
                     @endforeach
                 </select>
+                <p id="departmentError" class="errorMessage"></p>
             </div>
 
             <div class="form-group hidden" id="service-wrapper">

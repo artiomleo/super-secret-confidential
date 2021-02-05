@@ -1,14 +1,49 @@
 const dateFormat = 'YYYY-MM-DD HH:mm:ss';
 
-jQuery(document).ready(function($) {
-    if (window.history && window.history.pushState) {
-        window.history.pushState('forward', null, './#forward');
-        $(window).on('popstate', function() {
-            location.reload()
-        });
-    }
+$(document).ready(function () {
+    $("#submitbutton").on("click", function() {
+        $(this).attr("disabled", "disabled");
+        doWork();
+    });
 });
 
+function doWork() {
+    setTimeout('$("#submitbutton").removeAttr("disabled")', 200);
+    var name = document.getElementById("inputName");
+    var email = document.getElementById("inputEmail");
+    var phone = document.getElementById("inputPhone");
+    var department = document.getElementById("department");
+
+    if (!name.checkValidity()) {
+        document.getElementById("nameError").innerHTML = 'Te rog completeaza nume';
+        return
+    } else {
+        document.getElementById("nameError").innerHTML = '';
+    }
+
+    if (!email.checkValidity()) {
+        document.getElementById("emailError").innerHTML = 'Te rog completeaza email';
+        return
+    } else {
+        document.getElementById("emailError").innerHTML = '';
+    }
+
+    if (!phone.checkValidity()) {
+        document.getElementById("phoneError").innerHTML = 'Te rog completeaza telefon';
+        return
+    } else {
+        document.getElementById("phoneError").innerHTML = '';
+    }
+
+    if (!department.checkValidity()) {
+        document.getElementById("departmentError").innerHTML = 'Te rog completeaza departament';
+        return
+    } else {
+        document.getElementById("departmentError").innerHTML = '';
+    }
+
+    document.getElementById("form").submit();
+}
 
 function onChangeCategory() {
     var serviceWrapper = document.getElementById("service-wrapper");

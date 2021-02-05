@@ -74,7 +74,7 @@
                 },
                 type: "POST",
                 success: function (response) {
-                    displayMessage("Recenzia aceasta a fost adăugată pe pagina de Home!");
+                    displayMessage("Recenzia aceasta a fost adăugată pe pagina de Acasă!");
                 }
             });
 
@@ -90,7 +90,7 @@
                 },
                 type: "POST",
                 success: function (response) {
-                    displayMessage("Recenzia aceasta a fost adăgată pe pagina de Home!");
+                    displayMessage("Recenzia aceasta a fost adăgată pe pagina de Acasă!");
                 }
             });
 

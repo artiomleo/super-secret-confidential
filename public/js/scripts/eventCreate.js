@@ -59,6 +59,7 @@ function onChangeCategory() {
     var departmentSelect = document.getElementById('department');
 
     serviceWrapper.classList.remove('hidden')
+    document.getElementById("departmentError").innerHTML = '';
     filter(departmentSelect.value)
 }
 

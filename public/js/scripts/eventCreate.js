@@ -1,5 +1,15 @@
 const dateFormat = 'YYYY-MM-DD HH:mm:ss';
 
+jQuery(document).ready(function($) {
+    if (window.history && window.history.pushState) {
+        window.history.pushState('forward', null, './#forward');
+        $(window).on('popstate', function() {
+            location.reload()
+        });
+    }
+});
+
+
 function onChangeCategory() {
     var serviceWrapper = document.getElementById("service-wrapper");
     var departmentSelect = document.getElementById('department');

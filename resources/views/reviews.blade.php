@@ -35,7 +35,7 @@
         });
 
         function onDeleteClick(id) {
-            const deleteMsg = confirm("Chiar vrei să ștergi recenzia?");
+            const deleteMsg = confirm("Chiar doriți să ștergeți recenzia?");
 
             if (deleteMsg) {
                 $.ajax({

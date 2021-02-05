@@ -24,28 +24,28 @@ function doWork() {
     var department = document.getElementById("department");
 
     if (!name.checkValidity()) {
-        document.getElementById("nameError").innerHTML = 'Te rog completeaza nume';
+        document.getElementById("nameError").innerHTML = 'Te rog completează un nume!';
         return
     } else {
         document.getElementById("nameError").innerHTML = '';
     }
 
     if (!email.checkValidity()) {
-        document.getElementById("emailError").innerHTML = 'Te rog completeaza email';
+        document.getElementById("emailError").innerHTML = 'Te rog completează un E-mail!';
         return
     } else {
         document.getElementById("emailError").innerHTML = '';
     }
 
     if (!phone.checkValidity()) {
-        document.getElementById("phoneError").innerHTML = 'Te rog completeaza telefon';
+        document.getElementById("phoneError").innerHTML = 'Te rog completează numărul de telefon!';
         return
     } else {
         document.getElementById("phoneError").innerHTML = '';
     }
 
     if (!department.checkValidity()) {
-        document.getElementById("departmentError").innerHTML = 'Te rog completeaza departament';
+        document.getElementById("departmentError").innerHTML = 'Alege un departament te rog!';
         return
     } else {
         document.getElementById("departmentError").innerHTML = '';
